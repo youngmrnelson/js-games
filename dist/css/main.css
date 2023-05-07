@@ -147,10 +147,6 @@ table {
   color: var(--red);
   font-weight: 600;
 }
-.p-draw {
-  color: var(--dark);
-  font-weight: 400;
-}
 
 .container {
   max-width: 1200px;
