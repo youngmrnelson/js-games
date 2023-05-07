@@ -41,7 +41,10 @@ function game() {
 const gameStartBtn = document.querySelector('.btn-game');
 const roundNumberEl = document.querySelector('.round-number');
 const playerScoreEl = document.querySelector('.player-score');
+const playerChoiceEl = document.querySelector('.player-choice');
 const cpuScoreEl = document.querySelector('.cpu-score');
+const cpuChoiceEl = document.querySelector('.cpu-choice');
+const rpsChoicesContainer = document.querySelector('.rps-choices');
 
 // Game Variables
 let roundNumber = 0;
@@ -61,19 +64,29 @@ function resetGameScores() {
     roundNumber = 0;
     playerScore = 0;
     cpuScore = 0;
+    playerChoiceEl.innerHTML = '?';
+    cpuChoiceEl.innerHTML = '?';
 }
 
+// Display Game Scores
 function displayGameScores() {
     roundNumberEl.textContent = roundNumber;
     playerScoreEl.textContent = playerScore;
     cpuScoreEl.textContent = cpuScore;
 }
 
+// Display RPS Buttons
+function displayGameButtons() {
+    rpsChoicesContainer.classList.remove('hidden');
+}
+
 
 gameStartBtn.addEventListener('click', startGame);
 
-function startGame() {    
+function startGame() {
+    gameStartBtn.style.display = 'none';    
     displayGameHeader();
     resetGameScores();
     displayGameScores();
+    displayGameButtons();
 }
