@@ -110,8 +110,10 @@
 .hidden {
     display: none;
 
-    @media(min-width: 1024px) {
-        display: flex;
+    &-mobile {
+        @media(min-width: 1024px) {
+            display: flex;
+        }
     }
 }
 
