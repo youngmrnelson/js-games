@@ -29,6 +29,21 @@
     }
 }
 
+// Game Result Classes
+.game {
+    &-win {
+        color: var(--green);
+    }
+
+    &-lose {
+        color: var(--red);
+    }
+
+    &-draw {
+        color: var(--dark);
+    }
+}
+
 // Gap
 .gap {
     &-1 { gap: 8px }

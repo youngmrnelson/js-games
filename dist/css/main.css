@@ -148,6 +148,16 @@ table {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.game-win {
+  color: var(--green);
+}
+.game-lose {
+  color: var(--red);
+}
+.game-draw {
+  color: var(--dark);
+}
+
 .gap-1 {
   gap: 8px;
 }
