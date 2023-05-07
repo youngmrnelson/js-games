@@ -3,7 +3,7 @@
     cursor: pointer;
     display: inline-block;
     border: 2px solid transparent;
-    border-radius: 0 10px 0 10px;
+    border-radius:10px;
     color: var(--gray-9);
     background: transparent;
     font-size: 2rem;
@@ -12,6 +12,70 @@
     &-menu {
         @media(min-width: 1024px) {
             display: none;
+        }
+    }
+
+    &-game {
+        background: var(--dark);
+        color: #fff;
+        
+        &:hover {
+            background: #555;
+        }
+    }
+
+    &-rps {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        &-rock {
+            color: var(--red);
+
+            &:hover {
+                background: var(--red-light);
+            }
+
+            &:active {
+                background: var(--red-dark);
+            }
+        }
+
+        &-paper {
+            color: var(--green);
+
+            &:hover {
+                background: var(--green-light);
+            }
+
+            &:active {
+                background: var(--green-dark);
+            }
+        }
+
+        &-scissors {
+            color: var(--blue);
+
+            &:hover {
+                background: var(--blue-light);
+            }
+
+            &:active {
+                background: var(--blue-dark);
+            }
+        }
+
+        &-choice {
+            font-size: 3.2rem;
+        }
+
+        &-choice-icon {
+            font-size: 4.4rem;
         }
     }
 }

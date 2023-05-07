@@ -103,7 +103,7 @@ a {
 
     &-game {
         font-size: 3rem;
-        color: #333;
+        color: var(--dark);
     }
 }
 
@@ -124,6 +124,17 @@ a {
 
     &-game {
         font-size: 2rem;
-        color: #333;
+        color: var(--dark);
+    }
+}
+
+// Icons
+.i {
+    &-game-player {
+        font-size: 4rem;
+
+        &-choice {
+            font-size: 3rem;
+        }
     }
 }
