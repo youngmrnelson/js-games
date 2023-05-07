@@ -1,0 +1,17 @@
+// Buttons
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid transparent;
+    border-radius: 0 10px 0 10px;
+    color: var(--gray-9);
+    background: transparent;
+    font-size: 2rem;
+    transition: var(--transition);
+
+    &-menu {
+        @media(min-width: 1024px) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,76 @@
+// Flexbox Layouts
+.flex {
+    display: flex;
+
+    // FD-C
+    &-fd--c {
+        flex-direction: column;
+
+        @media(min-width: 767px) {
+            flex-direction: row;
+        }
+    }
+}
+
+// Grid Layouts
+.grid {
+    display: grid;
+
+    // 2 Col
+    &-gc--2 {
+        grid-template-columns: 1fr 1fr;
+
+        @media(min-width: 1024px) {
+            grid-template-columns: auto auto;
+        }
+    }
+
+    // Full
+    &-col--full {
+        grid-column: 1 / -1;
+
+        @media(min-width: 1024px) {
+            grid-column: auto;
+        }
+    }
+}
+
+// Flex
+.f {
+    &-1 {
+        flex: 1;
+    }
+}
+
+// Justify Content
+.jc {
+    &-c {
+        justify-content: center;
+    }
+
+    &-sb {
+        justify-content: space-between;
+    }
+}
+
+// Align Items
+.ai {
+    &-c {
+        align-items: center;
+    }
+}
+
+// Place Self
+.ps {
+    &-c {
+        place-self: center;
+    }
+
+    &-c-e {
+        place-self: center end;
+
+        @media(min-width: 767px) {
+            place-self: center;
+        }
+    }
+}

@@ -1,1 +1,10 @@
 @use 'reset';
+@use 'layout';
+@use 'utilities';
+@use 'components';
+@use 'navigation';
+@use 'typography';
+
+html {
+    font-size: 62.5%;
+}

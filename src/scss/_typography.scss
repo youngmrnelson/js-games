@@ -1,0 +1,115 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+body {
+    color: var(--black);
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+// Anchor Tags
+.a {
+    display: inline-block;
+    transition: var(--transition);
+
+    &-logo,
+    &-nav-link {
+        text-transform: uppercase;
+        font-family: 'Nerko One', cursive;
+    }
+
+    &-logo {
+        color: var(--gray);
+        font-size: 3.4rem;
+
+        &:hover {
+            color: var(--gray-light);
+        }
+    }
+
+    &-nav-link {
+        font-size: 1.6rem;
+        color: #fff;
+        border-radius: 25px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        text-shadow: -1px 1px 0 #000,
+        1px 1px 0 #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000;
+                
+        &:hover {
+            text-shadow: -1px 1px 0 #fff,
+            1px 1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px -1px 0 #fff;
+            transform: translateY(-2px);
+        }
+        
+        &:active {
+            transform: scale(0.95);
+        }
+
+        &:hover,
+        &:active {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+
+        &-rps {
+            background: url('../images/red-bg-animated.svg') no-repeat center center/cover;
+
+            &:hover {
+                color: var(--red-dark);
+            }
+        }
+
+        &-eas {
+            background: url('../images/green-bg-animated.svg') no-repeat center center/cover;
+
+            &:hover {
+                color: var(--green-dark);
+            }
+        }
+
+        &-calc {
+            background: url('../images/blue-bg-animated.svg') no-repeat center center/cover;
+
+            &:hover {
+                color: var(--blue-dark);
+            }
+        }
+    }
+
+    &-nav-link-ext {
+        border-color: var(--black);
+        background: url('../images/gray-bg-animated.svg') no-repeat center center/cover;
+
+        &:hover {
+            color: var(--black);
+        }
+    }
+}
+
+// Headings
+.h {
+    font-family: 'Nerko One', cursive;
+}
+
+// Paragraphs
+.p {
+    &-main {
+        font-size: 1.8rem;
+    }
+
+    &-choice {
+        font-size: 3.6rem;
+        font-family: 'Nerko One', cursive;
+    }
+}
