@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -50,6 +52,297 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.flex {
+  display: flex;
+}
+.flex-fd--c {
+  flex-direction: column;
+}
+@media (min-width: 767px) {
+  .flex-fd--c {
+    flex-direction: row;
+  }
+}
+
+.grid {
+  display: grid;
+}
+.grid-gc--2 {
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 1024px) {
+  .grid-gc--2 {
+    grid-template-columns: auto auto;
+  }
+}
+.grid-col--full {
+  grid-column: 1/-1;
+}
+@media (min-width: 1024px) {
+  .grid-col--full {
+    grid-column: auto;
+  }
+}
+
+.f-1 {
+  flex: 1;
+}
+
+.jc-c {
+  justify-content: center;
+}
+.jc-sb {
+  justify-content: space-between;
+}
+
+.ai-c {
+  align-items: center;
+}
+
+.ps-c {
+  place-self: center;
+}
+.ps-c-e {
+  place-self: center end;
+}
+@media (min-width: 767px) {
+  .ps-c-e {
+    place-self: center;
+  }
+}
+
+:root {
+  --js-yellow: #facc15;
+  --black: #030712;
+  --gray-light: #9ca3af;
+  --gray: #6b7280;
+  --gray-dark: #111827;
+  --red-light: #f87171;
+  --red: #b91c1c;
+  --red-dark: #7f1d1d;
+  --green-light: #a3e635;
+  --green: #4d7c0f;
+  --green-dark: #3f6212;
+  --blue-light: #60a5fa;
+  --blue: #1d4ed8;
+  --blue-dark: #1e40af;
+  --transition: all 0.25s;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.gap-1 {
+  gap: 8px;
+}
+.gap-2 {
+  gap: 16px;
+}
+.gap-3 {
+  gap: 24px;
+}
+
+.py-0 {
+  padding-block: 8px;
+}
+.py-1 {
+  padding-block: 24px;
+}
+.py-2 {
+  padding-block: 32px;
+}
+.py-3 {
+  padding-block: 44px;
+}
+.py-4 {
+  padding-block: 80px;
+}
+
+.pi-1 {
+  padding-inline: 8px;
+}
+.pi-2 {
+  padding-inline: 12px;
+}
+
+.pb-1 {
+  padding-bottom: 4px;
+}
+
+.p-0 {
+  padding: 4px;
+}
+.p-1 {
+  padding: 8px;
+}
+.p-2 {
+  padding: 12px;
+}
+.p-3 {
+  padding: 24px;
+}
+
+.my-1 {
+  margin-block: 12px;
+}
+.my-2 {
+  margin-block: 24px;
+}
+.my-3 {
+  margin-block: 36px;
+}
+.my-4 {
+  margin-block: 80px;
+}
+
+.mb-1 {
+  margin-bottom: 12px;
+}
+.mb-2 {
+  margin-bottom: 24px;
+}
+.mb-3 {
+  margin-bottom: 36px;
+}
+.mb-4 {
+  margin-bottom: 64px;
+}
+
+.ml-0 {
+  margin-left: 4px;
+}
+.ml-1 {
+  margin-left: 8px;
+}
+
+.mt-1 {
+  margin-top: 12px;
+}
+.mt-2 {
+  margin-top: 24px;
+}
+.mt-3 {
+  margin-top: 36px;
+}
+
+.m-auto {
+  margin-inline: auto;
+}
+
+.ta-c {
+  text-align: center;
+}
+.ta-r {
+  text-align: right;
+}
+
+.bottom-line {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 0 10px 0 10px;
+  color: var(--gray-9);
+  background: transparent;
+  font-size: 2rem;
+  transition: var(--transition);
+}
+@media (min-width: 1024px) {
+  .btn-menu {
+    display: none;
+  }
+}
+
+body {
+  color: var(--black);
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.a {
+  display: inline-block;
+  transition: var(--transition);
+}
+.a-logo, .a-nav-link {
+  text-transform: uppercase;
+  font-family: "Nerko One", cursive;
+}
+.a-logo {
+  color: var(--gray);
+  font-size: 3.4rem;
+}
+.a-logo:hover {
+  color: var(--gray-light);
+}
+.a-nav-link {
+  font-size: 1.6rem;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+.a-nav-link:hover {
+  text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+  transform: translateY(-2px);
+}
+.a-nav-link:active {
+  transform: scale(0.95);
+}
+.a-nav-link:hover, .a-nav-link:active {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.a-nav-link-rps {
+  background: url("../images/red-bg-animated.svg") no-repeat center center/cover;
+}
+.a-nav-link-rps:hover {
+  color: var(--red-dark);
+}
+.a-nav-link-eas {
+  background: url("../images/green-bg-animated.svg") no-repeat center center/cover;
+}
+.a-nav-link-eas:hover {
+  color: var(--green-dark);
+}
+.a-nav-link-calc {
+  background: url("../images/blue-bg-animated.svg") no-repeat center center/cover;
+}
+.a-nav-link-calc:hover {
+  color: var(--blue-dark);
+}
+.a-nav-link-ext {
+  border-color: var(--black);
+  background: url("../images/gray-bg-animated.svg") no-repeat center center/cover;
+}
+.a-nav-link-ext:hover {
+  color: var(--black);
+}
+
+.h {
+  font-family: "Nerko One", cursive;
+}
+
+.p-main {
+  font-size: 1.8rem;
+}
+.p-choice {
+  font-size: 3.6rem;
+  font-family: "Nerko One", cursive;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 /*# sourceMappingURL=main.css.map */
