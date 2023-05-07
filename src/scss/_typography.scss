@@ -100,6 +100,11 @@ a {
 // Headings
 .h {
     font-family: 'Nerko One', cursive;
+
+    &-game {
+        font-size: 3rem;
+        color: #333;
+    }
 }
 
 // Paragraphs
@@ -111,5 +116,14 @@ a {
     &-choice {
         font-size: 3.6rem;
         font-family: 'Nerko One', cursive;
+    }
+
+    &-footer {
+        font-size: 1.4rem;
+    }
+
+    &-game {
+        font-size: 2rem;
+        color: #333;
     }
 }

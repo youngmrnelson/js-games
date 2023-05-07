@@ -134,6 +134,11 @@ table {
 .container {
   max-width: 1200px;
 }
+.container-game {
+  height: 90%;
+  width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
 .gap-1 {
   gap: 8px;
@@ -239,12 +244,25 @@ table {
   text-align: right;
 }
 
+.top-line {
+  border-top: 1px solid #ccc;
+}
+
 .bottom-line {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .hidden {
   display: none;
+}
+@media (min-width: 1024px) {
+  .hidden {
+    display: flex;
+  }
+}
+
+.full-screen {
+  height: 100vh;
 }
 
 .btn {
@@ -336,6 +354,10 @@ a {
 .h {
   font-family: "Nerko One", cursive;
 }
+.h-game {
+  font-size: 3rem;
+  color: #333;
+}
 
 .p-main {
   font-size: 1.8rem;
@@ -343,6 +365,13 @@ a {
 .p-choice {
   font-size: 3.6rem;
   font-family: "Nerko One", cursive;
+}
+.p-footer {
+  font-size: 1.4rem;
+}
+.p-game {
+  font-size: 2rem;
+  color: #333;
 }
 
 html {
