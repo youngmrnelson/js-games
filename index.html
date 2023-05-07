@@ -29,7 +29,7 @@
           <i class="fa-solid fa-bars" aria-label="Open Navigation Menu"></i>
         </button>
         <ul
-          class="nav-links flex flex-fd--c-mobile gap-3 ai-c jc-c ps-c grid-col--full hidden"
+          class="nav-links flex flex-fd--c-mobile gap-3 ai-c jc-c ps-c grid-col--full-mobile hidden"
         >
           <li>
             <a href="#" class="a a-nav-link a-nav-link-rps p-2" target="_blank"
@@ -68,13 +68,16 @@
       </div>
     </nav>
     <!-- Game Container -->
-    <main class="full-screen flex ai-c jc-c" id="game">
-      <div class="container-game ta-c p-2">
-        <h2 class="h h-game">ROCK PAPER SCISSORS</h2>
-        <button class="btn btn-game p-2">Start Game</button>
-        <p class="h h-game">Round #<span class="round-number">0</span></p>
-        <p class="p-game">Pick your weapon</p>
-        <div class="p-scores">
+    <main class="my-4 flex ai-c jc-c" id="game">
+      <div class="container-game ta-c p-3 grid grid-gc--2">
+        <h2 class="h h-game grid-col--full">ROCK PAPER SCISSORS</h2>
+        <button class="btn btn-game p-2 grid-col--full ps-c">Start Game</button>
+        <p class="h h-game grid-col--full">
+          Round #<span class="round-number">0</span>
+        </p>
+        <p class="p-game grid-col--full">Pick your weapon</p>
+        <div class="p-scores ps-c">
+          <p class="p-game">Score: <span class="player-score">0</span></p>
           <p class="p-game"><i class="fa-solid fa-user i-game-player"></i></p>
           <p class="p-game">
             User
@@ -83,7 +86,8 @@
             ></span>
           </p>
         </div>
-        <div class="p-scores">
+        <div class="p-scores ps-c">
+          <p class="p-game">Score: <span class="cpu-score">0</span></p>
           <p class="p-game">
             <i class="fa-solid fa-user-astronaut i-game-player"></i>
           </p>
@@ -94,18 +98,20 @@
             CPU
           </p>
         </div>
-        <div class="rps-choices">
-          <button class="btn btn-rps gap-3 btn-rps-rock">
+        <div
+          class="m-auto rps-choices grid-col--full grid grid-gc--2 gap-3 my-3"
+        >
+          <button class="btn btn-rps gap-3 btn-rps-rock ps-c">
             <i
               class="fa-regular fa-hand-back-fist btn-rps-choice-icon mb-1"
             ></i>
             <span class="h btn-rps-choice disp-block">ROCK</span>
           </button>
-          <button class="btn btn-rps btn-rps-paper">
+          <button class="btn btn-rps btn-rps-paper ps-c">
             <i class="fa-regular fa-hand btn-rps-choice-icon mb-1"></i>
             <span class="h btn-rps-choice disp-block">PAPER</span>
           </button>
-          <button class="btn btn-rps btn-rps-scissors">
+          <button class="btn btn-rps btn-rps-scissors grid-col--full ps-c">
             <i class="fa-regular fa-hand-scissors btn-rps-choice-icon mb-1"></i>
             <span class="h btn-rps-choice disp-block">SCISSORS</span>
           </button>
