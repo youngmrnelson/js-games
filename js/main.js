@@ -17,3 +17,18 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = prompt('Rock, paper, scissors?', 'rock').toLowerCase();
+    computerSelection = getComputerChoice();
+
+    console.log(playerSelection, computerSelection);
+}
+
+function game() {
+    for(let i = 0; i < 5; i++){
+        playRound();
+    }
+}
+
+game();
