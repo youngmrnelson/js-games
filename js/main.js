@@ -11,31 +11,6 @@ navMenuBtn.addEventListener('click', function() {
 ////////////
 // Rock Paper Scissors Game
 ////////////
-function getComputerChoice() {
-    const cpuChoices = ['rock', 'paper', 'scissors'];
-    return cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
-}
-
-console.log(getComputerChoice());
-
-function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt('Rock, paper, scissors?', 'rock').toLowerCase();
-    computerSelection = getComputerChoice();
-
-    console.log(playerSelection, computerSelection);
-}
-
-function game() {
-    for(let i = 0; i < 5; i++){
-        playRound();
-    }
-}
-
-// game();
-
-////////////
-// Rock Paper Scissors Game
-////////////
 
 // DOM Variables
 const gameStartBtn = document.querySelector('.btn-game');
@@ -45,18 +20,27 @@ const playerChoiceEl = document.querySelector('.player-choice');
 const cpuScoreEl = document.querySelector('.cpu-score');
 const cpuChoiceEl = document.querySelector('.cpu-choice');
 const rpsChoicesContainer = document.querySelector('.rps-choices');
+const rockBtn = document.querySelector('.btn-rps-rock');
+const paperBtn = document.querySelector('.btn-rps-paper');
+const scissorsBtn = document.querySelector('.btn-rps-scissors');
 
 // Game Variables
 let roundNumber = 0;
 let playerScore = 0;
 let cpuScore = 0;
 
+// CPU Choice
+function getComputerChoice() {
+    const cpuChoices = ['rock', 'paper', 'scissors'];
+    return cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
+}
+
 // Display Game Text
 function displayGameHeader() {
     const gameHeader = document.querySelector('.game-header');
     const gameText = document.querySelector('.game-text');
-    gameHeader.classList.remove('hidden');
-    gameText.classList.remove('hidden');
+    gameHeader.classList.toggle('hidden');
+    gameText.classList.toggle('hidden');
 }
 
 // Reset Game Round, Score, & Choices
@@ -77,7 +61,7 @@ function displayGameScores() {
 
 // Display RPS Buttons
 function displayGameButtons() {
-    rpsChoicesContainer.classList.remove('hidden');
+    rpsChoicesContainer.classList.toggle('hidden');
 }
 
 
@@ -90,3 +74,42 @@ function startGame() {
     displayGameScores();
     displayGameButtons();
 }
+
+function endGame() {
+    gameStartBtn.style.display = 'block';
+    displayGameHeader();
+    displayGameButtons();
+}
+
+function playRound(playerSelection) {
+    const computerSelection = getComputerChoice();
+    console.log(playerSelection, computerSelection);
+
+    if(playerSelection === computerSelection) {
+        console.log('Tie');
+    } else if(
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+    ) {
+        console.log('You win!');
+    } else {
+        console.log('You lose...');
+    }
+}
+
+function game(playerSelection) {
+    playRound(playerSelection);
+}
+
+rockBtn.addEventListener('click', function() {
+    game('rock');
+});
+
+paperBtn.addEventListener('click', function() {
+    game('paper');
+});
+
+scissorsBtn.addEventListener('click', function() {
+    game('scissors');
+});
