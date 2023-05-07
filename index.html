@@ -29,7 +29,7 @@
           <i class="fa-solid fa-bars" aria-label="Open Navigation Menu"></i>
         </button>
         <ul
-          class="nav-links flex flex-fd--c gap-3 ai-c jc-c ps-c grid-col--full hidden"
+          class="nav-links flex flex-fd--c-mobile gap-3 ai-c jc-c ps-c grid-col--full hidden"
         >
           <li>
             <a href="#" class="a a-nav-link a-nav-link-rps p-2" target="_blank"
@@ -71,19 +71,44 @@
     <main class="full-screen flex ai-c jc-c" id="game">
       <div class="container-game ta-c p-2">
         <h2 class="h h-game">ROCK PAPER SCISSORS</h2>
+        <button class="btn btn-game p-2">Start Game</button>
+        <p class="h h-game">Round #<span class="round-number">0</span></p>
         <p class="p-game">Pick your weapon</p>
         <div class="p-scores">
-          <p class="p-game">User</p>
-          <p class="p-game">User</p>
+          <p class="p-game"><i class="fa-solid fa-user i-game-player"></i></p>
+          <p class="p-game">
+            User
+            <span class="user-choice"
+              ><i class="fa-solid fa-hand-back-fist i-game-player-choice"></i
+            ></span>
+          </p>
         </div>
         <div class="p-scores">
-          <p class="p-game">User</p>
-          <p class="p-game">User</p>
+          <p class="p-game">
+            <i class="fa-solid fa-user-astronaut i-game-player"></i>
+          </p>
+          <p class="p-game">
+            <span class="cpu-choice"
+              ><i class="fa-solid fa-hand-back-fist i-game-player-choice"></i
+            ></span>
+            CPU
+          </p>
         </div>
         <div class="rps-choices">
-          <button class="btn btn-rps">A</button
-          ><button class="btn btn-rps">B</button
-          ><button class="btn btn-rps">C</button>
+          <button class="btn btn-rps gap-3 btn-rps-rock">
+            <i
+              class="fa-regular fa-hand-back-fist btn-rps-choice-icon mb-1"
+            ></i>
+            <span class="h btn-rps-choice disp-block">ROCK</span>
+          </button>
+          <button class="btn btn-rps btn-rps-paper">
+            <i class="fa-regular fa-hand btn-rps-choice-icon mb-1"></i>
+            <span class="h btn-rps-choice disp-block">PAPER</span>
+          </button>
+          <button class="btn btn-rps btn-rps-scissors">
+            <i class="fa-regular fa-hand-scissors btn-rps-choice-icon mb-1"></i>
+            <span class="h btn-rps-choice disp-block">SCISSORS</span>
+          </button>
         </div>
       </div>
     </main>
