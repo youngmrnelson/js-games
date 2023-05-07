@@ -84,7 +84,7 @@ table {
   grid-column: 1/-1;
 }
 @media (min-width: 1024px) {
-  .grid-col--full {
+  .grid-col--full-mobile {
     grid-column: auto;
   }
 }
@@ -303,6 +303,9 @@ table {
 }
 .btn-rps:active {
   transform: scale(0.95);
+}
+.btn-rps:hover {
+  transform: translateY(-2px);
 }
 .btn-rps-rock {
   color: var(--red);

@@ -33,9 +33,11 @@
     &-col--full {
         grid-column: 1 / -1;
 
+      &-mobile {
         @media(min-width: 1024px) {
             grid-column: auto;
         }
+      }
     }
 }
 
