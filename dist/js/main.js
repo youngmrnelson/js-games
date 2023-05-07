@@ -9,7 +9,7 @@ navMenuBtn.addEventListener('click', function() {
 })
 
 ////////////
-// Rock Paper Scissors Game
+// Rock Paper Scissors Game - Global Variables
 ////////////
 
 // DOM Variables
@@ -19,6 +19,7 @@ const playerScoreEl = document.querySelector('.player-score');
 const playerChoiceEl = document.querySelector('.player-choice');
 const cpuScoreEl = document.querySelector('.cpu-score');
 const cpuChoiceEl = document.querySelector('.cpu-choice');
+const gameMessage = document.querySelector('.game-message');
 const rpsChoicesContainer = document.querySelector('.rps-choices');
 const rockBtn = document.querySelector('.btn-rps-rock');
 const paperBtn = document.querySelector('.btn-rps-paper');
@@ -28,6 +29,11 @@ const scissorsBtn = document.querySelector('.btn-rps-scissors');
 let roundNumber = 0;
 let playerScore = 0;
 let cpuScore = 0;
+const winningScore = 5;
+
+////////////
+// Rock Paper Scissors Game - Game Functions
+////////////
 
 // CPU Choice
 function getComputerChoice() {
@@ -64,12 +70,11 @@ function displayGameButtons() {
     rpsChoicesContainer.classList.toggle('hidden');
 }
 
-
-gameStartBtn.addEventListener('click', startGame);
-
 function startGame() {
-    gameStartBtn.style.display = 'none';    
+    gameStartBtn.style.display = 'none';  
+    gameMessage.textContent = '';  
     displayGameHeader();
+    nobodyWinsGame();
     resetGameScores();
     displayGameScores();
     displayGameButtons();
@@ -81,26 +86,96 @@ function endGame() {
     displayGameButtons();
 }
 
+function updateGameRound() {
+    roundNumber++;
+    roundNumberEl.textContent = roundNumber;
+}
+
+function playerWinsRound() {
+    playerScore++;
+    playerScoreEl.textContent = playerScore;
+    gameMessage.textContent = 'You won!'
+}
+
+function cpuWinsRound(){
+    cpuScore++;
+    cpuScoreEl.textContent = cpuScore;
+    gameMessage.textContent = 'You lost...'
+}
+
+function updatePlayerChoices(playerSelection, computerSelection) {
+    playerChoiceEl.textContent = playerSelection.toUpperCase();
+    cpuChoiceEl.textContent = computerSelection.toUpperCase();
+}
+
+function checkForWinner() {
+    if(playerScore !== winningScore && cpuScore !== winningScore) {
+        return;
+    } else if(playerScore === winningScore) {
+        playerWinsGame();
+    } else if(cpuScore === winningScore) {
+        cpuWinsGame();
+    }
+}
+
+function playerWinsGame() {
+    playerScoreEl.classList.add('p-win');
+    playerChoiceEl.classList.add('p-win');
+    cpuScoreEl.classList.add('p-lose');
+    cpuChoiceEl.classList.add('p-lose');
+    endGame();
+}
+
+function cpuWinsGame() {
+    playerScoreEl.classList.add('p-lose');
+    playerChoiceEl.classList.add('p-lose');
+    cpuScoreEl.classList.add('p-win');
+    cpuChoiceEl.classList.add('p-win');
+    endGame();
+}
+
+function nobodyWinsGame() {
+    playerScoreEl.classList.remove('p-win');
+    playerChoiceEl.classList.remove('p-win');
+    cpuScoreEl.classList.remove('p-win');
+    cpuChoiceEl.classList.remove('p-win');
+    playerScoreEl.classList.remove('p-lose');
+    playerChoiceEl.classList.remove('p-lose');
+    cpuScoreEl.classList.remove('p-lose');
+    cpuChoiceEl.classList.remove('p-lose');
+}
+
 function playRound(playerSelection) {
     const computerSelection = getComputerChoice();
-    console.log(playerSelection, computerSelection);
+    updatePlayerChoices(playerSelection, computerSelection);
 
     if(playerSelection === computerSelection) {
-        console.log('Tie');
+        updateGameRound();
+        gameMessage.textContent = "It's a draw."
     } else if(
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
     ) {
-        console.log('You win!');
+        updateGameRound();
+        playerWinsRound();
+        checkForWinner();
     } else {
-        console.log('You lose...');
+        updateGameRound();
+        cpuWinsRound();
+        checkForWinner();
     }
 }
 
 function game(playerSelection) {
     playRound(playerSelection);
 }
+
+////////////
+// Rock Paper Scissors Game -Event Listeners
+////////////
+
+gameStartBtn.addEventListener('click', startGame);
 
 rockBtn.addEventListener('click', function() {
     game('rock');

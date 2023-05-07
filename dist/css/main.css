@@ -139,6 +139,19 @@ table {
   --transition: all 0.25s;
 }
 
+.p-win {
+  color: var(--green);
+  font-weight: 600;
+}
+.p-lose {
+  color: var(--red);
+  font-weight: 600;
+}
+.p-draw {
+  color: var(--dark);
+  font-weight: 400;
+}
+
 .container {
   max-width: 1200px;
 }
@@ -146,16 +159,6 @@ table {
   height: 90%;
   width: 90%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.game-win {
-  color: var(--green);
-}
-.game-lose {
-  color: var(--red);
-}
-.game-draw {
-  color: var(--dark);
 }
 
 .gap-1 {
