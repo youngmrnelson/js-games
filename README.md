@@ -4,6 +4,8 @@ This is a simple game of Rock, Paper, Scissors, best to five. The game is played
 
 ## Live Preview
 
+[https://youngmrnelson.github.io/rock-paper-scissors/](https://youngmrnelson.github.io/rock-paper-scissors/)
+
 ## Game Rules
 
 - Rock beats Scissors
