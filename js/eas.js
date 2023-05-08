@@ -6,12 +6,14 @@
 
 // DOM Variables
 const easContainer = document.querySelector('.container-eas');
+const easBtns = document.querySelectorAll('.btn-eas');
 const colorInput = document.getElementById('eas-color');
 const colorBtn = document.querySelector('.btn-eas-color');
 const rainbowBtn = document.querySelector('.btn-eas-rainbow');
 const eraserBtn = document.querySelector('.btn-eas-eraser');
 const clearBtn = document.querySelector('.btn-eas-clear');
 const rangeInput = document.getElementById('eas-range');
+const rangeText = document.getElementById('eas-range-num');
 
 // Global Variables
 let range = 1;
@@ -45,6 +47,7 @@ createSquares(range);
 rangeInput.addEventListener('change', () => {
     removeSquares();
     range = rangeInput.value;
+    rangeText.textContent = `${range} x ${range}`;
     createSquares(range);
     updateGrid(range);
 })
