@@ -79,10 +79,19 @@ function rainbowSquares() {
     }))
 }
 
+function eraseSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) => square.addEventListener('mouseover', function() {
+        square.style.backgroundColor = '#FFF';
+    }))
+}
+
+
 ////////////
 // Etch-a-Sketch - Event Listeners
 ////////////
 colorInput.addEventListener('change', colorPicker);
 colorBtn.addEventListener('click', colorSquares);
 rainbowBtn.addEventListener('click', rainbowSquares);
+eraserBtn.addEventListener('click', eraseSquares);
 clearBtn.addEventListener('click', clearSquares);
