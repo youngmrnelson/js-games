@@ -15,6 +15,7 @@ const rangeInput = document.getElementById('eas-range');
 
 // Global Variables
 let range = 1;
+let colorValue = colorInput.value;
 
 ////////////
 // Etch-a-Sketch - Functions
@@ -54,7 +55,19 @@ function clearSquares() {
         square.style.backgroundColor = '#FFF';
     })
 }
+
+function colorPicker() {
+    colorBtn.style.backgroundColor = colorValue;
+}
+
+function colorSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) => square.addEventListener('mouseover', function() {
+        square.style.backgroundColor = colorValue;
+    }))
+}
 ////////////
 // Etch-a-Sketch - Event Listeners
 ////////////
+easContainer.addEventListener('mouseover', colorSquares);
 clearBtn.addEventListener('click', clearSquares);
