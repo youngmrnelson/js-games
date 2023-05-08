@@ -68,6 +68,9 @@ table {
     flex-direction: row;
   }
 }
+.flex-w-w {
+  flex-wrap: wrap;
+}
 
 .grid {
   display: grid;
@@ -160,6 +163,10 @@ table {
   height: 512px;
   width: 512px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.img {
+  width: 400px;
 }
 
 .gap-1 {
@@ -378,6 +385,9 @@ a {
   display: inline-block;
   transition: var(--transition);
 }
+.a-main {
+  color: #333;
+}
 .a-logo, .a-nav-link {
   text-transform: uppercase;
   font-family: "Nerko One", cursive;
@@ -434,6 +444,9 @@ a {
 
 .h {
   font-family: "Nerko One", cursive;
+}
+.h-main {
+  font-size: 4rem;
 }
 .h-game {
   font-size: 3rem;
