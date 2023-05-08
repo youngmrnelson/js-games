@@ -9,9 +9,10 @@
     &-square {
         border: 1px solid var(--gray-light);
         transition: var(--transition);
+        background-color: red;
 
         &:hover {
-            background: rgba(0, 0, 0, 0.1);
+            filter: brightness(0.75);
         }
     }
 }
