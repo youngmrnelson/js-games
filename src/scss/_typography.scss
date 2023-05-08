@@ -19,6 +19,10 @@ a {
     display: inline-block;
     transition: var(--transition);
 
+    &-main {
+        color: #333;
+    }
+
     &-logo,
     &-nav-link {
         text-transform: uppercase;
@@ -100,6 +104,10 @@ a {
 // Headings
 .h {
     font-family: 'Nerko One', cursive;
+
+    &-main {
+        font-size: 4rem;
+    }
 
     &-game {
         font-size: 3rem;
