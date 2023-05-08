@@ -7,6 +7,10 @@
 // DOM Variables
 const easContainer = document.querySelector('.container-eas');
 const colorInput = document.getElementById('eas-color');
+const colorBtn = document.querySelector('.btn-eas-color');
+const rainbowBtn = document.querySelector('.btn-eas-rainbow');
+const eraserBtn = document.querySelector('.btn-eas-eraser');
+const clearBtn = document.querySelector('.btn-eas-clear');
 const rangeInput = document.getElementById('eas-range');
 
 // Global Variables
@@ -43,3 +47,14 @@ rangeInput.addEventListener('change', () => {
     createSquares(range);
     updateGrid(range);
 })
+
+function clearSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) => {
+        square.style.backgroundColor = '#FFF';
+    })
+}
+////////////
+// Etch-a-Sketch - Event Listeners
+////////////
+clearBtn.addEventListener('click', clearSquares);
