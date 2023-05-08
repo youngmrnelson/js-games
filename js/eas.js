@@ -16,12 +16,18 @@ let range = 1;
 // Etch-a-Sketch - Functions
 ////////////
 function createSquares(range) {
-    for(let i = 0; i < range; i++) {
+    for(let i = 0; i < range * range; i++) {
         const cell = document.createElement('div');
         cell.classList.add('eas-square');
         easContainer.appendChild(cell);
     }
     updateGrid(range);
+}
+
+function removeSquares() {
+    while(easContainer.firstChild) {
+        easContainer.removeChild(easContainer.firstChild);
+    }
 }
 
 function updateGrid(range) {
@@ -32,6 +38,8 @@ function updateGrid(range) {
 createSquares(range);
 
 rangeInput.addEventListener('change', () => {
+    removeSquares();
     range = rangeInput.value;
-    console.log(range);
+    createSquares(range);
+    updateGrid(range);
 })
