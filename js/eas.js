@@ -57,7 +57,7 @@ function clearSquares() {
 }
 
 function colorPicker() {
-    colorBtn.style.backgroundColor = colorValue;
+    colorValue = colorInput.value;
 }
 
 function colorSquares() {
@@ -66,8 +66,23 @@ function colorSquares() {
         square.style.backgroundColor = colorValue;
     }))
 }
+
+function generateRainbow() {
+    const [r, g, b] = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function rainbowSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) => square.addEventListener('mouseover', function() {
+        square.style.backgroundColor = generateRainbow();
+    }))
+}
+
 ////////////
 // Etch-a-Sketch - Event Listeners
 ////////////
-easContainer.addEventListener('mouseover', colorSquares);
+colorInput.addEventListener('change', colorPicker);
+colorBtn.addEventListener('click', colorSquares);
+rainbowBtn.addEventListener('click', rainbowSquares);
 clearBtn.addEventListener('click', clearSquares);

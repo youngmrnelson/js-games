@@ -470,7 +470,6 @@ a {
 .eas-square {
   border: 1px solid var(--gray-light);
   transition: var(--transition);
-  background-color: red;
 }
 .eas-square:hover {
   filter: brightness(0.75);
