@@ -35,9 +35,15 @@
 .container {
     max-width: 1200px;
 
-    &-game {
+    &-rps {
         height: 90%;
         width: 90%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    &-eas {
+        height: 512px;
+        width: 512px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 }

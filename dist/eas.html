@@ -68,7 +68,20 @@
       </div>
     </nav>
     <!-- Game Container -->
-    <main class="my-4 flex ai-c jc-c" id="game"></main>
+    <main class="my-4 flex flex-fd--c ai-c jc-c p-2" id="game">
+      <h2 class="h h-game mb-2">ETCH-A-SKETCH</h2>
+      <div
+        class="eas-controls-container mb-2 flex flex-fd--c-mobile gap-2 ai-c"
+      >
+        <input type="color" id="eas-color" />
+        <button class="btn btn-eas btn-eas-color p-2">Color Mode</button>
+        <button class="btn btn-eas btn-eas-rainbow p-2">Rainbow Mode</button>
+        <button class="btn btn-eas p-2">Eraser</button>
+        <button class="btn btn-eas p-2">Clear</button>
+        <input type="range" id="eas-range" min="1" max="64" />
+      </div>
+      <div class="container-eas eas-grid"></div>
+    </main>
     <!-- Footer -->
     <footer class="footer ta-c p-3 top-line">
       <p class="p-footer">

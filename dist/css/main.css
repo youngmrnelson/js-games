@@ -151,9 +151,14 @@ table {
 .container {
   max-width: 1200px;
 }
-.container-game {
+.container-rps {
   height: 90%;
   width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.container-eas {
+  height: 512px;
+  width: 512px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -292,6 +297,9 @@ table {
   font-size: 2rem;
   transition: var(--transition);
 }
+.btn:active {
+  transform: scale(0.95);
+}
 @media (min-width: 1024px) {
   .btn-menu {
     display: none;
@@ -309,9 +317,6 @@ table {
   width: 150px;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.btn-rps:active {
-  transform: scale(0.95);
 }
 .btn-rps:hover {
   transform: translateY(-2px);
@@ -348,6 +353,13 @@ table {
 }
 .btn-rps-choice-icon {
   font-size: 4.4rem;
+}
+.btn-eas {
+  border: 1px solid var(--dark);
+}
+.btn-eas.active {
+  background: var(--dark);
+  color: #fff;
 }
 
 body {
@@ -448,6 +460,32 @@ a {
 }
 .i-game-player-choice {
   font-size: 3rem;
+}
+
+.eas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.eas-square {
+  border: 1px solid var(--gray-light);
+  transition: var(--transition);
+}
+.eas-square:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#eas-color {
+  appearance: none;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: #ddd;
 }
 
 html {

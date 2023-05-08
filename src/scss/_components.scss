@@ -1,5 +1,6 @@
 // Buttons
 .btn {
+    // General
     cursor: pointer;
     display: inline-block;
     border: 2px solid transparent;
@@ -8,6 +9,10 @@
     background: transparent;
     font-size: 2rem;
     transition: var(--transition);
+
+    &:active {
+        transform: scale(0.95);
+    }
 
     &-menu {
         @media(min-width: 1024px) {
@@ -24,15 +29,12 @@
         }
     }
 
+    // Rock, Paper, Scissors
     &-rps {
         height: 150px;
         width: 150px;
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-        &:active {
-            transform: scale(0.95);
-        }
 
         &:hover {
             transform: translateY(-2px);
@@ -80,6 +82,16 @@
 
         &-choice-icon {
             font-size: 4.4rem;
+        }
+    }
+
+    // Etch-a-Sketch
+    &-eas {
+        border: 1px solid var(--dark);
+
+        &.active {
+            background: var(--dark);
+            color: #fff;
         }
     }
 }
