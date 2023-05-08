@@ -468,6 +468,7 @@ a {
   grid-template-rows: repeat(4, 1fr);
 }
 .eas-square {
+  cursor: pointer;
   border: 1px solid var(--gray-light);
   transition: var(--transition);
 }

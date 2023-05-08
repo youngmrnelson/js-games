@@ -18,6 +18,7 @@ const rangeText = document.getElementById('eas-range-num');
 // Global Variables
 let range = 1;
 let colorValue = colorInput.value;
+rangeText.textContent = `${range} x ${range}`;
 
 ////////////
 // Etch-a-Sketch - Functions
@@ -98,3 +99,11 @@ colorBtn.addEventListener('click', colorSquares);
 rainbowBtn.addEventListener('click', rainbowSquares);
 eraserBtn.addEventListener('click', eraseSquares);
 clearBtn.addEventListener('click', clearSquares);
+easBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        easBtns.forEach((btn) => {
+            btn.classList.remove('active');
+        })
+        btn.classList.add('active');
+    })
+})
