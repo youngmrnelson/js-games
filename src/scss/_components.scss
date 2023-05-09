@@ -94,4 +94,23 @@
             color: #fff;
         }
     }
+
+    // Calculator
+    &-calc {
+        background: #aaa;
+        color: #fff;
+
+        &:hover {
+            filter: brightness(0.95);
+        }
+    }
+
+    &-calc-alt {
+        background: #eee;
+        color: #333;
+    }
+
+    &-op {
+        background: #f59f00;
+    }
 }

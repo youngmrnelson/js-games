@@ -29,6 +29,10 @@
         color: var(--red);
         font-weight: 600;
     }
+
+    &-calc {
+        background: #fff;
+    }
 }
 
 // Container
@@ -45,6 +49,10 @@
         height: 512px;
         width: 512px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    &-calc {
+        background: #333;
     }
 }
 
