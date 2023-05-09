@@ -29,10 +29,6 @@
         color: var(--red);
         font-weight: 600;
     }
-
-    &-calc {
-        background: #fff;
-    }
 }
 
 // Container
@@ -151,4 +147,8 @@
 // Screen Size
 .full-screen {
     height: 100vh;
+}
+
+.calc-display {
+    background: #fff;
 }
