@@ -156,9 +156,6 @@ table {
   color: var(--red);
   font-weight: 600;
 }
-.p-calc {
-  background: #fff;
-}
 
 .container {
   max-width: 1200px;
@@ -304,6 +301,10 @@ table {
 
 .full-screen {
   height: 100vh;
+}
+
+.calc-display {
+  background: #fff;
 }
 
 .btn {
@@ -492,6 +493,10 @@ a {
 .p-game {
   font-size: 2rem;
   color: var(--dark);
+}
+.p-calc-display {
+  font-style: italic;
+  color: #444;
 }
 
 .i-game-player {
