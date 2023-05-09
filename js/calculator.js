@@ -12,8 +12,8 @@ const calcAltBtns = document.querySelectorAll('.btn-calc-alt');
 const calcOpBtns = document.querySelectorAll('.btn-op');
 
 // Calculator Variables
-let calcInputValue = 0;
-let prevCalcInputValue = 0;
+let calcInputValue = 5;
+let prevCalcInputValue = 5;
 
 // Calculator Functions
 const calcFunctions = {
@@ -28,17 +28,34 @@ const calcFunctions = {
     },
     divide(a, b) {
         return a / b;
-    }
+    },
 }
 
 calcNumberBtns.forEach(btn => {
-    btn.addEventListener('click', () => console.log(btn))
+    btn.addEventListener('click', function(e) {
+        console.log(e.target.textContent);
+    })
 })
 
 calcAltBtns.forEach(btn => {
-    btn.addEventListener('click', () => console.log(btn))
+    btn.addEventListener('click', function(e) {
+        console.log(e.target.textContent);
+    })
 })
 
 calcOpBtns.forEach(btn => {
-    btn.addEventListener('click', () => console.log(btn))
+    btn.addEventListener('click', function(e) {
+        if(e.target.textContent === '+') {
+            console.log(calcFunctions.add(calcInputValue, prevCalcInputValue))
+        }
+        if(e.target.textContent === '-') {
+            console.log(calcFunctions.subtract(calcInputValue, prevCalcInputValue))
+        }
+        if(e.target.textContent === '/') {
+            console.log(calcFunctions.divide(calcInputValue, prevCalcInputValue))
+        }
+        if(e.target.textContent === 'x') {
+            console.log(calcFunctions.multiply(calcInputValue, prevCalcInputValue))
+        }
+    })
 })
