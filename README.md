@@ -1,27 +1,20 @@
-# Rock Paper Scissors
-
-This is a simple game of Rock, Paper, Scissors, best to five. The game is played against the computer, and the first player to win five rounds wins the game.
+# JS Games
 
 ## Live Preview
 
 [https://youngmrnelson.github.io/js-games/](https://youngmrnelson.github.io/js-games/)
 
-## Game Rules
+## Rock Paper Scissors
 
-- Rock beats Scissors
-- Paper beats Rock
-- Scissors beat Paper
-- If both players choose the same option, it's a tie
+This is a simple game of Rock, Paper, Scissors, best to five. The game is played against the computer, and the first player to win five rounds wins the game.
 
-## How to Play
+## Etch-a-Sketch
 
-1. Clone this repository to your local machine or download the source code.
-2. Open the index.html file in your web browser.
-3. Click on one of the three buttons to select your move.
-4. The computer will randomly choose its move.
-5. The winner of each round will be displayed on the screen.
-6. The first player to win five rounds wins the game.
-7. To restart the game, refresh the page.
+The etch-a-sketch app has a canvas that can be used to draw pictures by moving a virtual cursor up, down, left, or right. The app has several modes: Color mode, rainbow mode, eraser mode, and a clear canvas function.
+
+## Calculator
+
+The calculator consists of a user interface with a display screen and a set of buttons for input. The calculator can perform basic arithmetic operations such as addition, subtraction, multiplication, and division. The user enters numbers and operators by clicking the corresponding buttons on the interface.
 
 ## Technologies Used
 
