@@ -7,26 +7,38 @@
 // DOM Variables
 const calcInputDisplay = document.querySelector('.p-calc-display')
 const calcInputResult = document.querySelector('.p-calc');
-const calcBtns = document.querySelectorAll('.btn-calc');
+const calcNumberBtns = document.querySelectorAll('.btn-calc-num');
+const calcAltBtns = document.querySelectorAll('.btn-calc-alt');
+const calcOpBtns = document.querySelectorAll('.btn-op');
+
+// Calculator Variables
+let calcInputValue = 0;
+let prevCalcInputValue = 0;
 
 // Calculator Functions
-function add(a, b) {
-    return a + b;
+const calcFunctions = {
+   add(a, b) {
+        return a + b;
+    }, 
+    subtract(a, b) {
+        return a - b;
+    },
+    multiply(a, b) {
+        return a * b;
+    },
+    divide(a, b) {
+        return a / b;
+    }
 }
 
-function subtract(a, b) {
-    return a - b;
-}
+calcNumberBtns.forEach(btn => {
+    btn.addEventListener('click', () => console.log(btn))
+})
 
-function multiply(a, b) {
-    return a * b;
-}
+calcAltBtns.forEach(btn => {
+    btn.addEventListener('click', () => console.log(btn))
+})
 
-function divide(a, b) {
-    return a / b;
-}
-
-console.log(add(1, 2));
-console.log(subtract(3, 2));
-console.log(multiply(3, 2));
-console.log(divide(9, 3));
+calcOpBtns.forEach(btn => {
+    btn.addEventListener('click', () => console.log(btn))
+})
