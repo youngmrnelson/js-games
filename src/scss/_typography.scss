@@ -135,6 +135,11 @@ a {
         color: var(--dark);
     }
 
+    &-calc,
+    &-calc-display {
+        font-size: 2rem;
+    }
+
     &-calc-display {
         font-style: italic;
         color: #444;
