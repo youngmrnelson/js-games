@@ -46,8 +46,8 @@ function updateOperand(operand) {
     calcInputDisplay.textContent = selectedOperator;
 }
 
+// Clear the display and reset all operands and operator
 function clearCalculator() {
-    // Clear the display and reset all operands and operator
     calcInputValue = "";
     firstOperand = null;
     secondOperand = null;
@@ -59,6 +59,8 @@ function clearCalculator() {
 ////////////
 // Calculator - Event Listeners
 ////////////
+
+// Calculator Numbers
 calcNumberBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
         // Check if an operator has already been selected
