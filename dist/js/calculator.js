@@ -37,8 +37,8 @@ const calcFunctions = {
 
 // Display the updated operand value
 function updateCalcDisplay() {
-    calcInputValue = firstOperand.toString();
     calcInputDisplay.textContent = calcInputValue;
+    calcInputValue = 0;
 }
 
 function updateOperand(operand) {
@@ -52,7 +52,7 @@ function clearCalculator() {
     firstOperand = null;
     secondOperand = null;
     selectedOperator = null;
-    calcInputDisplay.textContent = "";
+    calcInputDisplay.textContent = "0";
 }
 
 
@@ -66,11 +66,13 @@ calcNumberBtns.forEach(btn => {
             // If not, update the first operand
             firstOperand = parseFloat(calcInputValue + e.target.textContent);
             // Display the updated operand value
+            calcInputValue = firstOperand.toString();
             updateCalcDisplay();
         } else {
             // If an operator has been selected, update the second operand
             secondOperand = parseFloat(calcInputValue + e.target.textContent);
             // Display the updated operand value
+            calcInputValue = secondOperand.toString();
             updateCalcDisplay();
         }
     })
@@ -80,7 +82,49 @@ calcAltBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
         if(e.target.textContent === 'AC') {
             clearCalculator();
+            calcInputResult.textContent = calcInputValue;
         }
     })
 })
 
+calcOpBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        if(e.target.textContent === '+') {
+            updateOperand('+');
+        }
+        if(e.target.textContent === '-') {
+            updateOperand('-');
+        }
+        if(e.target.textContent === '/') {
+            updateOperand('/');
+        }
+        if(e.target.textContent === '*') {
+            updateOperand('*');
+        }
+        // Calculate the result when the equals button is clicked
+        if(e.target.textContent === '=') {
+            if(firstOperand && secondOperand && selectedOperator) {
+                // Perfrom the calculation based on the selected operator
+                let result;
+                switch(selectedOperator) {
+                    case "+":
+                        result = calcFunctions.add(firstOperand, secondOperand);
+                        break;
+                    case "-":
+                        result = calcFunctions.subtract(firstOperand, secondOperand);
+                        break;
+                    case "*":
+                        result = calcFunctions.multiply(firstOperand, secondOperand);
+                        break;
+                    case "/":
+                        result = calcFunctions.divide(firstOperand, secondOperand);
+                        break;
+                }
+                // Display the result
+                calcInputResult.textContent = result;
+                // Reset the operands and operator
+                clearCalculator();
+            }
+        }
+    })
+})
