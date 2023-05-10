@@ -1,7 +1,7 @@
 "use strict";
 
 ////////////
-// Etch-a-Sketch - Global Variables
+// Calculator - Global Variables
 ////////////
 
 // DOM Variables
@@ -12,10 +12,14 @@ const calcAltBtns = document.querySelectorAll('.btn-calc-alt');
 const calcOpBtns = document.querySelectorAll('.btn-op');
 
 // Calculator Variables
-let calcInputValue = 5;
-let prevCalcInputValue = 5;
+let calcInputValue = "";
+let firstOperand;
+let secondOperand;
+let selectedOperator;
 
-// Calculator Functions
+////////////
+// Calculator - Functions
+////////////
 const calcFunctions = {
    add(a, b) {
         return a + b;
@@ -31,31 +35,52 @@ const calcFunctions = {
     },
 }
 
+// Display the updated operand value
+function updateCalcDisplay() {
+    calcInputValue = firstOperand.toString();
+    calcInputDisplay.textContent = calcInputValue;
+}
+
+function updateOperand(operand) {
+    selectedOperator = operand;
+    calcInputDisplay.textContent = selectedOperator;
+}
+
+function clearCalculator() {
+    // Clear the display and reset all operands and operator
+    calcInputValue = "";
+    firstOperand = null;
+    secondOperand = null;
+    selectedOperator = null;
+    calcInputDisplay.textContent = "";
+}
+
+
+////////////
+// Calculator - Event Listeners
+////////////
 calcNumberBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
-        console.log(e.target.textContent);
+        // Check if an operator has already been selected
+        if(!selectedOperator) {
+            // If not, update the first operand
+            firstOperand = parseFloat(calcInputValue + e.target.textContent);
+            // Display the updated operand value
+            updateCalcDisplay();
+        } else {
+            // If an operator has been selected, update the second operand
+            secondOperand = parseFloat(calcInputValue + e.target.textContent);
+            // Display the updated operand value
+            updateCalcDisplay();
+        }
     })
 })
 
 calcAltBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
-        console.log(e.target.textContent);
+        if(e.target.textContent === 'AC') {
+            clearCalculator();
+        }
     })
 })
 
-calcOpBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        if(e.target.textContent === '+') {
-            console.log(calcFunctions.add(calcInputValue, prevCalcInputValue))
-        }
-        if(e.target.textContent === '-') {
-            console.log(calcFunctions.subtract(calcInputValue, prevCalcInputValue))
-        }
-        if(e.target.textContent === '/') {
-            console.log(calcFunctions.divide(calcInputValue, prevCalcInputValue))
-        }
-        if(e.target.textContent === 'x') {
-            console.log(calcFunctions.multiply(calcInputValue, prevCalcInputValue))
-        }
-    })
-})
