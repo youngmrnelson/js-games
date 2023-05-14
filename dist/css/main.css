@@ -83,6 +83,14 @@ table {
     grid-template-columns: auto auto;
   }
 }
+.grid-gc--2-mobile {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 767px) {
+  .grid-gc--2-mobile {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 .grid-gc--4 {
   grid-template-columns: repeat(4, 1fr);
 }
@@ -510,6 +518,15 @@ a {
 }
 .i-game-player-choice {
   font-size: 3rem;
+}
+
+.img-preview {
+  display: none;
+}
+@media (min-width: 767px) {
+  .img-preview {
+    display: block;
+  }
 }
 
 .eas-grid {

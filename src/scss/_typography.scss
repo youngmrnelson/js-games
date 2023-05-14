@@ -156,3 +156,14 @@ a {
         }
     }
 }
+
+// Images
+.img {
+    &-preview {
+        display: none;
+
+        @media(min-width: 767px) {
+            display: block;
+        }
+    }
+}

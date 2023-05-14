@@ -70,6 +70,7 @@
     <!-- Game Container -->
     <main class="my-3 p-2" id="game">
       <div class="container m-auto">
+        <!-- Welcome Header -->
         <header class="ta-c mb-4">
           <h1 class="h h-main">Welcome to JS Games</h1>
           <p class="p-main">
@@ -83,29 +84,57 @@
             your JavaScript skills and enjoy some classic games.
           </p>
         </header>
-        <div class="container flex flex-w-w jc-c">
-          <figure class="p-1">
-            <img
-              src="images/rps-preview.png"
-              alt="Rock, Paper, Scissors peview"
-              class="img"
-            />
-          </figure>
-          <figure class="p-1">
-            <img
-              src="images/eas-preview.png"
-              alt="Etch-a-Sketch peview"
-              class="img"
-            />
-          </figure>
-          <figure class="p-1">
-            <img
-              src="images/calc-preview.png"
-              alt="Calculator peview"
-              class="img"
-            />
-          </figure>
-        </div>
+        <!-- Game Preview: Rock, Paper, Scissors -->
+        <article class="htu grid grid-gc--2-mobile mb-4 gap-3">
+          <div class="ps-c">
+            <p class="p-choice">ROCK PAPER SCISSORS</p>
+            <p class="p-main htu-description">
+              This is a simple game of Rock, Paper, Scissors, best to five. The
+              game is played against the computer, and the first player to win
+              five rounds wins the game.
+            </p>
+          </div>
+          <img
+            src="images/rps-preview.png"
+            alt="A family cooking breakfast"
+            class="img img-preview ps-c"
+          />
+        </article>
+        <!-- Game Preview: Etch-a-Sketch -->
+        <article class="htu grid grid-gc--2-mobile mb-4 gap-3">
+          <img
+            src="images/eas-preview.png"
+            alt="A family cooking breakfast"
+            class="img img-preview ps-c"
+          />
+          <div class="ps-c">
+            <p class="p-choice">ETCH-a-SKETCH</p>
+            <p class="p-main htu-description">
+              The etch-a-sketch app has a canvas that can be used to draw
+              pictures by moving a virtual cursor up, down, left, or right. The
+              app has several modes: Color mode, rainbow mode, eraser mode, and
+              a clear canvas function.
+            </p>
+          </div>
+        </article>
+        <!-- Game Preview: Calculator -->
+        <article class="htu grid grid-gc--2-mobile mb-4 gap-3">
+          <div class="ps-c">
+            <p class="p-choice">Calculator</p>
+            <p class="p-main htu-description">
+              The calculator consists of a user interface with a display screen
+              and a set of buttons for input. The calculator can perform basic
+              arithmetic operations such as addition, subtraction,
+              multiplication, and division. The user enters numbers and
+              operators by clicking the corresponding buttons on the interface.
+            </p>
+          </div>
+          <img
+            src="images/calc-preview.png"
+            alt="A family cooking breakfast"
+            class="img img-preview ps-c"
+          />
+        </article>
       </div>
     </main>
     <!-- Footer -->
