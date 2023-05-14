@@ -66,13 +66,13 @@ calcNumberBtns.forEach(btn => {
         // Check if an operator has already been selected
         if(!selectedOperator) {
             // If not, update the first operand
-            firstOperand = parseFloat(calcInputValue + e.target.textContent);
+            firstOperand = parseFloat((firstOperand || "") + e.target.textContent);
             // Display the updated operand value
             calcInputValue = firstOperand.toString();
             updateCalcDisplay();
         } else {
             // If an operator has been selected, update the second operand
-            secondOperand = parseFloat(calcInputValue + e.target.textContent);
+            secondOperand = parseFloat((secondOperand || "") + e.target.textContent);
             // Display the updated operand value
             calcInputValue = secondOperand.toString();
             updateCalcDisplay();
