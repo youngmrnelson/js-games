@@ -1,6 +1,7 @@
 // Variables
 :root {
     --js-yellow: #facc15;
+    --white-gradient: radial-gradient(#eee, #fff);
     --black: #030712;
     --dark: #333;
     --gray-light: #9ca3af;
@@ -15,6 +16,7 @@
     --blue-light: #60a5fa;
     --blue: #1d4ed8;
     --blue-dark: #1e40af;
+    --blue-gradient: linear-gradient(315deg, var(--blue) 0%, var(--blue-light) 100%);
     --transition: all 0.25s;
 }
 
