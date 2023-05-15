@@ -41,6 +41,11 @@
         }
     }
 
+    // 3 Col
+    &-gc--3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     // 4 Col
     &-gc--4 {
         grid-template-columns: repeat(4, 1fr);

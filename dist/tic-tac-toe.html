@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Play Rock, Paper, Scissors!" />
+    <meta
+      name="keywords"
+      content="games, etch a sketch, calculator, rock paper scissors, javascript, html, css, tic tac toe"
+    />
+    <meta name="author" content="Daniel Nelson" />
+    <title>Tic Tac Toe | JS Games</title>
+    <script
+      src="https://kit.fontawesome.com/7f4d3f6357.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav bottom-line">
+      <div class="container m-auto ta-c p-2 grid grid-gc--2 jc-sb gap-3">
+        <a href="index.html" class="a a-logo"
+          >JS Games
+          <i class="fa-solid fa-gamepad a-logo-icon" aria-hidden="true"></i
+        ></a>
+        <button class="btn btn-menu ps-c-e">
+          <i class="fa-solid fa-bars" aria-label="Open Navigation Menu"></i>
+        </button>
+        <ul
+          class="nav-links flex flex-fd--c-mobile gap-3 ai-c jc-c ps-c grid-col--full grid-col--full-mobile hidden-mobile"
+        >
+          <li>
+            <a href="rps.html" class="a a-nav-link a-nav-link-rps p-2"
+              >Rock Paper Scissors</a
+            >
+          </li>
+          <li>
+            <a href="eas.html" class="a a-nav-link a-nav-link-eas p-2"
+              >Etch a Sketch</a
+            >
+          </li>
+          <li>
+            <a href="calculator.html" class="a a-nav-link a-nav-link-calc p-2"
+              >Calculator</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/daniel-nelson-9151a6212/"
+              class="a a-nav-link a-nav-link-ext p-2"
+              target="_blank"
+              >Daniel Nelson
+              <i aria-hidden="true" class="fa-brands fa-linkedin"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/youngmrnelson"
+              class="a a-nav-link a-nav-link-ext p-2"
+              target="_blank"
+              >View The Code
+              <i aria-hidden="true" class="fa-brands fa-github"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Game Container -->
+    <main class="my-4 flex flex-fd--c ai-c jc-c p-2 full-screen" id="game">
+      <h2 class="h h-game mb-2">Tic Tac Toe</h2>
+      <div class="container-eas grid grid-gc--3">
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+        <button class="cell btn-cell"></button>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer ta-c p-3 top-line">
+      <p class="p-footer">
+        Created by
+        <a
+          href="https://www.linkedin.com/in/daniel-nelson-9151a6212/"
+          target="_blank"
+          class="a-main"
+          >Daniel Nelson</a
+        >
+        &copy; 2023
+      </p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/tic-tac-toe.js"></script>
+  </body>
+</html>

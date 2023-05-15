@@ -100,17 +100,6 @@ function updatePlayerChoices(playerSelection, computerSelection) {
   cpuChoiceEl.textContent = computerSelection.toUpperCase();
 }
 
-function checkForWinner() {
-  if (playerScore !== winningScore && cpuScore !== winningScore) {
-    return;
-  }
-  if (playerScore === winningScore) {
-    playerWinsGame();
-  } else if (cpuScore === winningScore) {
-    cpuWinsGame();
-  }
-}
-
 function playerWinsGame() {
   playerScoreEl.classList.add('p-win');
   playerChoiceEl.classList.add('p-win');
@@ -136,6 +125,17 @@ function nobodyWinsGame() {
   playerChoiceEl.classList.remove('p-lose');
   cpuScoreEl.classList.remove('p-lose');
   cpuChoiceEl.classList.remove('p-lose');
+}
+
+function checkForWinner() {
+  if (playerScore !== winningScore && cpuScore !== winningScore) {
+    return;
+  }
+  if (playerScore === winningScore) {
+    playerWinsGame();
+  } else if (cpuScore === winningScore) {
+    cpuWinsGame();
+  }
 }
 
 function playRound(playerSelection) {

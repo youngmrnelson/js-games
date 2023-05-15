@@ -113,4 +113,14 @@
     &-op {
         background: #f59f00;
     }
+
+    // Tic Tac Toe
+    &-cell {
+        background: #fff;
+        border: 2px solid #000;
+
+        &:hover {
+            background: #eee;
+        }
+    }
 }
