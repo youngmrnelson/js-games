@@ -1,7 +1,8 @@
-"use strict";
-////////////
+'use strict';
+
+/// /////////
 // Rock Paper Scissors Game - Global Variables
-////////////
+/// /////////
 
 // DOM Variables
 const gameStartBtn = document.querySelector('.btn-game');
@@ -22,160 +23,161 @@ let playerScore = 0;
 let cpuScore = 0;
 const winningScore = 5;
 
-////////////
+/// /////////
 // Rock Paper Scissors Game - Game Functions
-////////////
+/// /////////
 
 // CPU Choice
 function getComputerChoice() {
-    const cpuChoices = ['rock', 'paper', 'scissors'];
-    return cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
+  const cpuChoices = ['rock', 'paper', 'scissors'];
+  return cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
 }
 
 // Display Game Text
 function displayGameHeader() {
-    const gameHeader = document.querySelector('.game-header');
-    const gameText = document.querySelector('.game-text');
-    gameHeader.classList.toggle('hidden');
-    gameText.classList.toggle('hidden');
+  const gameHeader = document.querySelector('.game-header');
+  const gameText = document.querySelector('.game-text');
+  gameHeader.classList.toggle('hidden');
+  gameText.classList.toggle('hidden');
 }
 
 // Reset Game Round, Score, & Choices
 function resetGameScores() {
-    roundNumber = 0;
-    playerScore = 0;
-    cpuScore = 0;
-    playerChoiceEl.innerHTML = '?';
-    cpuChoiceEl.innerHTML = '?';
+  roundNumber = 0;
+  playerScore = 0;
+  cpuScore = 0;
+  playerChoiceEl.innerHTML = '?';
+  cpuChoiceEl.innerHTML = '?';
 }
 
 // Display Game Scores
 function displayGameScores() {
-    roundNumberEl.textContent = roundNumber;
-    playerScoreEl.textContent = playerScore;
-    cpuScoreEl.textContent = cpuScore;
+  roundNumberEl.textContent = roundNumber;
+  playerScoreEl.textContent = playerScore;
+  cpuScoreEl.textContent = cpuScore;
 }
 
 // Display RPS Buttons
 function displayGameButtons() {
-    rpsChoicesContainer.classList.toggle('hidden');
+  rpsChoicesContainer.classList.toggle('hidden');
 }
 
 function startGame() {
-    gameStartBtn.style.display = 'none';  
-    gameMessage.textContent = '';  
-    displayGameHeader();
-    nobodyWinsGame();
-    resetGameScores();
-    displayGameScores();
-    displayGameButtons();
+  gameStartBtn.style.display = 'none';
+  gameMessage.textContent = '';
+  displayGameHeader();
+  nobodyWinsGame();
+  resetGameScores();
+  displayGameScores();
+  displayGameButtons();
 }
 
 function endGame() {
-    gameStartBtn.style.display = 'block';
-    displayGameHeader();
-    displayGameButtons();
+  gameStartBtn.style.display = 'block';
+  displayGameHeader();
+  displayGameButtons();
 }
 
 function updateGameRound() {
-    roundNumber++;
-    roundNumberEl.textContent = roundNumber;
+  roundNumber++;
+  roundNumberEl.textContent = roundNumber;
 }
 
 function playerWinsRound() {
-    playerScore++;
-    playerScoreEl.textContent = playerScore;
-    gameMessage.textContent = 'You won!'
+  playerScore++;
+  playerScoreEl.textContent = playerScore;
+  gameMessage.textContent = 'You won!';
 }
 
-function cpuWinsRound(){
-    cpuScore++;
-    cpuScoreEl.textContent = cpuScore;
-    gameMessage.textContent = 'You lost...'
+function cpuWinsRound() {
+  cpuScore++;
+  cpuScoreEl.textContent = cpuScore;
+  gameMessage.textContent = 'You lost...';
 }
 
 function updatePlayerChoices(playerSelection, computerSelection) {
-    playerChoiceEl.textContent = playerSelection.toUpperCase();
-    cpuChoiceEl.textContent = computerSelection.toUpperCase();
+  playerChoiceEl.textContent = playerSelection.toUpperCase();
+  cpuChoiceEl.textContent = computerSelection.toUpperCase();
 }
 
 function checkForWinner() {
-    if(playerScore !== winningScore && cpuScore !== winningScore) {
-        return;
-    } else if(playerScore === winningScore) {
-        playerWinsGame();
-    } else if(cpuScore === winningScore) {
-        cpuWinsGame();
-    }
+  if (playerScore !== winningScore && cpuScore !== winningScore) {
+    return;
+  }
+  if (playerScore === winningScore) {
+    playerWinsGame();
+  } else if (cpuScore === winningScore) {
+    cpuWinsGame();
+  }
 }
 
 function playerWinsGame() {
-    playerScoreEl.classList.add('p-win');
-    playerChoiceEl.classList.add('p-win');
-    cpuScoreEl.classList.add('p-lose');
-    cpuChoiceEl.classList.add('p-lose');
-    endGame();
+  playerScoreEl.classList.add('p-win');
+  playerChoiceEl.classList.add('p-win');
+  cpuScoreEl.classList.add('p-lose');
+  cpuChoiceEl.classList.add('p-lose');
+  endGame();
 }
 
 function cpuWinsGame() {
-    playerScoreEl.classList.add('p-lose');
-    playerChoiceEl.classList.add('p-lose');
-    cpuScoreEl.classList.add('p-win');
-    cpuChoiceEl.classList.add('p-win');
-    endGame();
+  playerScoreEl.classList.add('p-lose');
+  playerChoiceEl.classList.add('p-lose');
+  cpuScoreEl.classList.add('p-win');
+  cpuChoiceEl.classList.add('p-win');
+  endGame();
 }
 
 function nobodyWinsGame() {
-    playerScoreEl.classList.remove('p-win');
-    playerChoiceEl.classList.remove('p-win');
-    cpuScoreEl.classList.remove('p-win');
-    cpuChoiceEl.classList.remove('p-win');
-    playerScoreEl.classList.remove('p-lose');
-    playerChoiceEl.classList.remove('p-lose');
-    cpuScoreEl.classList.remove('p-lose');
-    cpuChoiceEl.classList.remove('p-lose');
+  playerScoreEl.classList.remove('p-win');
+  playerChoiceEl.classList.remove('p-win');
+  cpuScoreEl.classList.remove('p-win');
+  cpuChoiceEl.classList.remove('p-win');
+  playerScoreEl.classList.remove('p-lose');
+  playerChoiceEl.classList.remove('p-lose');
+  cpuScoreEl.classList.remove('p-lose');
+  cpuChoiceEl.classList.remove('p-lose');
 }
 
 function playRound(playerSelection) {
-    const computerSelection = getComputerChoice();
-    updatePlayerChoices(playerSelection, computerSelection);
+  const computerSelection = getComputerChoice();
+  updatePlayerChoices(playerSelection, computerSelection);
 
-    if(playerSelection === computerSelection) {
-        updateGameRound();
-        gameMessage.textContent = "It's a draw."
-    } else if(
-        (playerSelection === 'rock' && computerSelection === 'scissors') ||
-        (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissors' && computerSelection === 'paper')
-    ) {
-        updateGameRound();
-        playerWinsRound();
-        checkForWinner();
-    } else {
-        updateGameRound();
-        cpuWinsRound();
-        checkForWinner();
-    }
+  if (playerSelection === computerSelection) {
+    updateGameRound();
+    gameMessage.textContent = "It's a draw.";
+  } else if (
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')
+  ) {
+    updateGameRound();
+    playerWinsRound();
+    checkForWinner();
+  } else {
+    updateGameRound();
+    cpuWinsRound();
+    checkForWinner();
+  }
 }
 
 function game(playerSelection) {
-    playRound(playerSelection);
+  playRound(playerSelection);
 }
 
-////////////
+/// /////////
 // Rock Paper Scissors Game -Event Listeners
-////////////
+/// /////////
 
 gameStartBtn.addEventListener('click', startGame);
 
-rockBtn.addEventListener('click', function() {
-    game('rock');
+rockBtn.addEventListener('click', () => {
+  game('rock');
 });
 
-paperBtn.addEventListener('click', function() {
-    game('paper');
+paperBtn.addEventListener('click', () => {
+  game('paper');
 });
 
-scissorsBtn.addEventListener('click', function() {
-    game('scissors');
+scissorsBtn.addEventListener('click', () => {
+  game('scissors');
 });
