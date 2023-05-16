@@ -69,7 +69,7 @@ a {
 
 
         &-rps {
-            background: url('../images/red-bg-animated.svg') no-repeat center center/cover;
+            background: url('../assets/images/red-bg-animated.svg') no-repeat center center/cover;
 
             &:hover {
                 color: var(--red-dark);
@@ -77,7 +77,7 @@ a {
         }
 
         &-eas {
-            background: url('../images/green-bg-animated.svg') no-repeat center center/cover;
+            background: url('../assets/images/green-bg-animated.svg') no-repeat center center/cover;
 
             &:hover {
                 color: var(--green-dark);
@@ -85,7 +85,7 @@ a {
         }
 
         &-calc {
-            background: url('../images/blue-bg-animated.svg') no-repeat center center/cover;
+            background: url('../assets/images/blue-bg-animated.svg') no-repeat center center/cover;
 
             &:hover {
                 color: var(--blue-dark);
@@ -95,7 +95,7 @@ a {
 
     &-nav-link-ext {
         border-color: var(--black);
-        background: url('../images/gray-bg-animated.svg') no-repeat center center/cover;
+        background: url('../assets/images/gray-bg-animated.svg') no-repeat center center/cover;
 
         &:hover {
             color: var(--black);

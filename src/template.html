@@ -10,13 +10,13 @@
       content="games, etch a sketch, calculator, rock paper scissors, javascript, html, css, the odin project"
     />
     <meta name="author" content="Daniel Nelson" />
-    <title>JS Games | Home</title>
+    <title><%= htmlWebpackPlugin.options.title %> | Home</title>
     <script
       src="https://kit.fontawesome.com/7f4d3f6357.js"
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/main.css" />
-  <script defer src="bundle6da9896b4eab431c864f.js"></script></head>
+  </head>
   <body>
     <!-- Navigation -->
     <nav class="nav bottom-line">
@@ -96,7 +96,7 @@
             <a href="rps.html" class="btn btn-game p-1">Play Now!</a>
           </div>
           <img
-            src="images/rps-preview.png"
+            src="<%=require('./assets/images/rps-preview.png')%>"
             alt="A family cooking breakfast"
             class="img img-preview ps-c"
           />
@@ -104,7 +104,7 @@
         <!-- Game Preview: Etch-a-Sketch -->
         <article class="htu grid grid-gc--2-mobile mb-4 gap-3">
           <img
-            src="images/eas-preview.png"
+            src="<%=require('./assets/images/eas-preview.png')%>"
             alt="A family cooking breakfast"
             class="img img-preview ps-c"
           />
@@ -133,7 +133,7 @@
             <a href="calculator.html" class="btn btn-game p-1">Play Now!</a>
           </div>
           <img
-            src="images/calc-preview.png"
+            src="<%=require('./assets/images/calc-preview.png')%>"
             alt="A family cooking breakfast"
             class="img img-preview ps-c"
           />
