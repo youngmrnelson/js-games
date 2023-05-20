@@ -32,17 +32,17 @@
           class="nav-links flex flex-fd--c-mobile gap-3 ai-c jc-c ps-c grid-col--full grid-col--full-mobile hidden-mobile"
         >
           <li>
-            <a href="#" class="a a-nav-link a-nav-link-rps p-2 rps-btn"
+            <a href="#" class="a a-nav-link a-nav-link-rps p-2 game-btn"
               >Rock Paper Scissors</a
             >
           </li>
           <li>
-            <a href="#" class="a a-nav-link a-nav-link-eas p-2 eas-btn"
+            <a href="#" class="a a-nav-link a-nav-link-eas p-2 game-btn"
               >Etch a Sketch</a
             >
           </li>
           <li>
-            <a href="#" class="a a-nav-link a-nav-link-calc p-2 calc-btn"
+            <a href="#" class="a a-nav-link a-nav-link-calc p-2 game-btn"
               >Calculator</a
             >
           </li>
@@ -68,7 +68,7 @@
       </div>
     </nav>
     <!-- Game Container -->
-    <main class="my-3 p-2" id="game">
+    <main class="my-3 p-2 full-screen" id="game">
       <div class="container m-auto">
         <!-- Welcome Header -->
         <header class="ta-c mb-4">
@@ -93,7 +93,6 @@
               game is played against the computer, and the first player to win
               five rounds wins the game.
             </p>
-            <a href="rps.html" class="btn btn-game p-1 rps-btn">Play Now!</a>
           </div>
           <img
             src="<%=require('./assets/images/rps-preview.png')%>"
@@ -116,7 +115,6 @@
               app has several modes: Color mode, rainbow mode, eraser mode, and
               a clear canvas function.
             </p>
-            <a href="eas.html" class="btn btn-game p-1 eas-btn">Play Now!</a>
           </div>
         </article>
         <!-- Game Preview: Calculator -->
@@ -130,9 +128,6 @@
               multiplication, and division. The user enters numbers and
               operators by clicking the corresponding buttons on the interface.
             </p>
-            <a href="calculator.html" class="btn btn-game p-1 calc-btn"
-              >Play Now!</a
-            >
           </div>
           <img
             src="<%=require('./assets/images/calc-preview.png')%>"
@@ -142,6 +137,13 @@
         </article>
       </div>
     </main>
+    <!-- Loading Image -->
+    <img
+      src="<%=require('./assets/images/loading.svg')%>"
+      alt="Loading..."
+      id="loading"
+      class="hidden m-auto"
+    />
     <!-- Footer -->
     <footer class="footer ta-c p-3 top-line">
       <p class="p-footer">

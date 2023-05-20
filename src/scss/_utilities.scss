@@ -147,6 +147,11 @@
     }
 }
 
+// Display
+.display {
+    &-block { display: block }
+}
+
 // Screen Size
 .full-screen {
     max-height: 100vh;
