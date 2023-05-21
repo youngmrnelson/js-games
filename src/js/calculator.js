@@ -1,132 +1,119 @@
 export default class Calculator {
-  constructor() {}
-}
-/// /////////
-// Calculator - Global Variables
-/// /////////
-
-// DOM Variables
-const calcInputDisplay = document.querySelector('.p-calc-display');
-const calcInputResult = document.querySelector('.p-calc');
-const calcNumberBtns = document.querySelectorAll('.btn-calc-num');
-const calcAltBtns = document.querySelectorAll('.btn-calc-alt');
-const calcOpBtns = document.querySelectorAll('.btn-op');
-
-// Calculator Variables
-let calcInputValue = '';
-let firstOperand;
-let secondOperand;
-let selectedOperator;
-
-/// /////////
-// Calculator - Functions
-/// /////////
-const calcFunctions = {
-  add(a, b) {
-    return a + b;
-  },
-  subtract(a, b) {
-    return a - b;
-  },
-  multiply(a, b) {
-    return a * b;
-  },
-  divide(a, b) {
-    return a / b;
-  },
-};
-
-// Display the updated operand value
-function updateCalcDisplay() {
-  calcInputDisplay.textContent = calcInputValue;
-  calcInputValue = 0;
-}
-
-function updateOperand(operand) {
-  selectedOperator = operand;
-  calcInputDisplay.textContent = selectedOperator;
-}
-
-// Clear the display and reset all operands and operator
-function clearCalculator() {
+  // DOM Variables
+  calcInputDisplay = document.querySelector('.p-calc-display');
+  calcInputResult = document.querySelector('.p-calc');
+  calcNumberBtns = document.querySelectorAll('.btn-calc-num');
+  calcAltBtns = document.querySelectorAll('.btn-calc-alt');
+  calcOpBtns = document.querySelectorAll('.btn-op');
+  // Global Variables
   calcInputValue = '';
-  firstOperand = null;
-  secondOperand = null;
-  selectedOperator = null;
-  calcInputDisplay.textContent = '0';
-}
+  firstOperand;
+  secondOperand;
+  selectedOperator;
 
-/// /////////
-// Calculator - Event Listeners
-/// /////////
-
-// Calculator Numbers
-calcNumberBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    // Check if an operator has already been selected
-    if (!selectedOperator) {
-      // If not, update the first operand
-      firstOperand = parseFloat((firstOperand || '') + e.target.textContent);
-      // Display the updated operand value
-      calcInputValue = firstOperand.toString();
-      updateCalcDisplay();
-    } else {
-      // If an operator has been selected, update the second operand
-      secondOperand = parseFloat((secondOperand || '') + e.target.textContent);
-      // Display the updated operand value
-      calcInputValue = secondOperand.toString();
-      updateCalcDisplay();
-    }
-  });
-});
-
-calcAltBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    if (e.target.textContent === 'AC') {
-      clearCalculator();
-      calcInputResult.textContent = calcInputValue;
-    }
-  });
-});
-
-calcOpBtns.forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    if (e.target.textContent === '+') {
-      updateOperand('+');
-    }
-    if (e.target.textContent === '-') {
-      updateOperand('-');
-    }
-    if (e.target.textContent === '/') {
-      updateOperand('/');
-    }
-    if (e.target.textContent === '*') {
-      updateOperand('*');
-    }
-    // Calculate the result when the equals button is clicked
-    if (e.target.textContent === '=') {
-      if (firstOperand && secondOperand && selectedOperator) {
-        // Perfrom the calculation based on the selected operator
-        let result;
-        switch (selectedOperator) {
-          case '+':
-            result = calcFunctions.add(firstOperand, secondOperand);
-            break;
-          case '-':
-            result = calcFunctions.subtract(firstOperand, secondOperand);
-            break;
-          case '*':
-            result = calcFunctions.multiply(firstOperand, secondOperand);
-            break;
-          case '/':
-            result = calcFunctions.divide(firstOperand, secondOperand);
-            break;
+  constructor() {
+    this.calcNumberBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        // Check if an operator has already been selected
+        if (!this.selectedOperator) {
+          // If not, update the first operand
+          this.firstOperand = parseFloat((this.firstOperand || '') + e.target.textContent);
+          // Display the updated operand value
+          this.calcInputValue = this.firstOperand.toString();
+          this.#updateCalcDisplay();
+        } else {
+          // If an operator has been selected, update the second operand
+          this.secondOperand = parseFloat((this.secondOperand || '') + e.target.textContent);
+          // Display the updated operand value
+          this.calcInputValue = this.secondOperand.toString();
+          this.#updateCalcDisplay();
         }
-        // Display the result
-        calcInputResult.textContent = result;
-        // Reset the operands and operator
-        clearCalculator();
-      }
-    }
-  });
-});
+      });
+    });
+
+    this.calcAltBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        if (e.target.textContent === 'AC') {
+          this.#clearCalculator();
+          this.calcInputResult.textContent = this.calcInputValue;
+        }
+      });
+    });
+
+    this.calcOpBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        if (e.target.textContent === '+') {
+          this.#updateOperand('+');
+        }
+        if (e.target.textContent === '-') {
+          this.#updateOperand('-');
+        }
+        if (e.target.textContent === '/') {
+          this.#updateOperand('/');
+        }
+        if (e.target.textContent === '*') {
+          this.#updateOperand('*');
+        }
+        // Calculate the result when the equals button is clicked
+        if (e.target.textContent === '=') {
+          if (this.firstOperand && this.secondOperand && this.selectedOperator) {
+            // Perfrom the calculation based on the selected operator
+            let result;
+            switch (this.selectedOperator) {
+              case '+':
+                result = this.#add(this.firstOperand, sthis.econdOperand);
+                break;
+              case '-':
+                result = this.#subtract(this.firstOperand, this.secondOperand);
+                break;
+              case '*':
+                result = this.#multiply(this.firstOperand, this.secondOperand);
+                break;
+              case '/':
+                result = this.#divide(this.firstOperand, this.secondOperand);
+                break;
+            }
+            // Display the result
+            this.calcInputResult.textContent = result;
+            // Reset the operands and operator
+            this.#clearCalculator();
+          }
+        }
+      });
+    });
+  }
+
+  #add(a, b) {
+    return a + b;
+  }
+
+  #subtract(a, b) {
+    return a - b;
+  }
+
+  #multiply(a, b) {
+    return a * b;
+  }
+
+  #divide(a, b) {
+    return a / b;
+  }
+
+  #updateCalcDisplay() {
+    this.calcInputDisplay.textContent = this.calcInputValue;
+    this.calcInputValue = 0;
+  }
+
+  #updateOperand(operand) {
+    this.selectedOperator = operand;
+    this.calcInputDisplay.textContent = this.selectedOperator;
+  }
+
+  #clearCalculator() {
+    this.calcInputValue = '';
+    this.firstOperand = null;
+    this.secondOperand = null;
+    this.selectedOperator = null;
+    this.calcInputDisplay.textContent = '0';
+  }
+}
