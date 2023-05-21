@@ -12,7 +12,6 @@ export default class EtchASketch {
   // Global Variables
   #range = 1;
   #colorValue = this.colorInput.value;
-  rangeText = `${this.#range} x ${this.#range}`;
 
   constructor() {
     // Event Listeners
@@ -30,6 +29,7 @@ export default class EtchASketch {
         btn.classList.add('active');
       })
     })
+    this.rangeInput.addEventListener('change', this.#updateRange.bind(this));
   }
 
   #createSquares(range) {
@@ -93,7 +93,7 @@ export default class EtchASketch {
       const squares = document.querySelectorAll('.eas-square');
       squares.forEach((square) =>
         square.addEventListener('mouseover', () => {
-        square.style.backgroundColor = generateRainbow();
+        square.style.backgroundColor = this.#generateRainbow();
       })
     );
   }
