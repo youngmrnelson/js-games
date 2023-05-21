@@ -22,6 +22,9 @@ export default class RockPaperScissors {
   constructor() {
     // Event Listeners
     this.gameStartBtn.addEventListener('click', this.#startGame.bind(this));
+    this.rockBtn.addEventListener('click', () => this.#playGame('rock'));
+    this.paperBtn.addEventListener('click', () => this.#playGame('paper'));
+    this.scissorsBtn.addEventListener('click', () => this.#playGame('scissors'));
   }
 
   #getComputerChoice() {
@@ -67,7 +70,7 @@ export default class RockPaperScissors {
   #endGame() {
     this.gameStartBtn.style.display = 'block';
     this.#displayGameHeader();
-    this.displayGameButtons();
+    this.#displayGameButtons();
   }
 
   #updateGameRound() {
@@ -136,7 +139,7 @@ export default class RockPaperScissors {
 
     if (playerSelection === computerSelection) {
       this.#updateGameRound();
-      gameMessage.textContent = "It's a draw.";
+      this.gameMessage.textContent = "It's a draw.";
     } else if (
       (playerSelection === 'rock' && computerSelection === 'scissors') ||
       (playerSelection === 'paper' && computerSelection === 'rock') ||

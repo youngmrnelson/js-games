@@ -61,7 +61,7 @@ export default class Calculator {
             let result;
             switch (this.selectedOperator) {
               case '+':
-                result = this.#add(this.firstOperand, sthis.econdOperand);
+                result = this.#add(this.firstOperand, this.secondOperand);
                 break;
               case '-':
                 result = this.#subtract(this.firstOperand, this.secondOperand);
