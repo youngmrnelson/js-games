@@ -1,118 +1,109 @@
-'use strict';
+export default class EtchASketch {
+  // DOM Variables
+  easContainer = document.querySelector('.container-eas');
+  easBtns = document.querySelectorAll('.btn-eas');
+  colorInput = document.getElementById('eas-color');
+  colorBtn = document.querySelector('.btn-eas-color');
+  rainbowBtn = document.querySelector('.btn-eas-rainbow');
+  eraserBtn = document.querySelector('.btn-eas-eraser');
+  clearBtn = document.querySelector('.btn-eas-clear');
+  rangeInput = document.getElementById('eas-range');
+  rangeText = document.getElementById('eas-range-num');
+  // Global Variables
+  #range = 1;
+  #colorValue = this.colorInput.value;
+  rangeText = `${this.#range} x ${this.#range}`;
 
-/// /////////
-// Etch-a-Sketch - Global Variables
-/// /////////
-
-// DOM Variables
-const easContainer = document.querySelector('.container-eas');
-const easBtns = document.querySelectorAll('.btn-eas');
-const colorInput = document.getElementById('eas-color');
-const colorBtn = document.querySelector('.btn-eas-color');
-const rainbowBtn = document.querySelector('.btn-eas-rainbow');
-const eraserBtn = document.querySelector('.btn-eas-eraser');
-const clearBtn = document.querySelector('.btn-eas-clear');
-const rangeInput = document.getElementById('eas-range');
-const rangeText = document.getElementById('eas-range-num');
-
-// Global Variables
-let range = 1;
-let colorValue = colorInput.value;
-rangeText.textContent = `${range} x ${range}`;
-
-/// /////////
-// Etch-a-Sketch - Functions
-/// /////////
-function createSquares(range) {
-  for (let i = 0; i < range * range; i++) {
-    const cell = document.createElement('div');
-    cell.classList.add('eas-square');
-    easContainer.appendChild(cell);
-  }
-  updateGrid(range);
-}
-
-function removeSquares() {
-  while (easContainer.firstChild) {
-    easContainer.removeChild(easContainer.firstChild);
-  }
-}
-
-function updateGrid(range) {
-  easContainer.style.gridTemplateColumns = `repeat(${range}, 1fr)`;
-  easContainer.style.gridTemplateRows = `repeat(${range}, 1fr)`;
-}
-
-createSquares(range);
-
-rangeInput.addEventListener('change', () => {
-  removeSquares();
-  range = rangeInput.value;
-  rangeText.textContent = `${range} x ${range}`;
-  createSquares(range);
-  updateGrid(range);
-});
-
-function clearSquares() {
-  const squares = document.querySelectorAll('.eas-square');
-  squares.forEach((square) => {
-    square.style.backgroundColor = '#FFF';
-  });
-}
-
-function colorPicker() {
-  colorValue = colorInput.value;
-}
-
-function colorSquares() {
-  const squares = document.querySelectorAll('.eas-square');
-  squares.forEach((square) =>
-    square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = colorValue;
+  constructor() {
+    // Event Listeners
+    this.#createSquares(this.#range);
+    this.colorInput.addEventListener('change', this.#colorPicker.bind(this));
+    this.colorBtn.addEventListener('click', this.#colorSquares.bind(this));
+    this.rainbowBtn.addEventListener('click', this.#rainbowSquares.bind(this));
+    this.eraserBtn.addEventListener('click', this.#eraseSquares.bind(this));
+    this.clearBtn.addEventListener('click', this.#clearSquares.bind(this));
+    this.easBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        this.easBtns.forEach((btn) => {
+          btn.classList.remove('active')
+        })
+        btn.classList.add('active');
+      })
     })
-  );
-}
+  }
 
-function generateRainbow() {
-  const [r, g, b] = [
-    Math.floor(Math.random() * 256),
-    Math.floor(Math.random() * 256),
-    Math.floor(Math.random() * 256),
-  ];
-  return `rgb(${r}, ${g}, ${b})`;
-}
+  #createSquares(range) {
+    for(let i = 0; i < range * range; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('eas-square');
+      this.easContainer.appendChild(cell);
+    }
+    this.#updateGrid(range);
+  }
 
-function rainbowSquares() {
-  const squares = document.querySelectorAll('.eas-square');
-  squares.forEach((square) =>
-    square.addEventListener('mouseover', () => {
-      square.style.backgroundColor = generateRainbow();
-    })
-  );
-}
+  #removeSquares() {
+    while(this.easContainer.firstChild) {
+      this.easContainer.removeChild(this.easContainer.firstChild);
+    }
+  }
 
-function eraseSquares() {
-  const squares = document.querySelectorAll('.eas-square');
-  squares.forEach((square) =>
-    square.addEventListener('mouseover', () => {
+  #updateGrid(range) {
+    this.easContainer.style.gridTemplateColumns = `repeat(${this.#range}, 1fr)`;
+    this.easContainer.style.gridTemplateRows = `repeat(${this.#range}, 1fr)`;
+  }
+
+  #updateRange() {
+    this.#removeSquares()
+    this.#range = this.rangeInput.value;
+    this.rangeText.textContent = `${this.#range} x ${this.#range}`;
+    this.#createSquares(this.#range);
+    this.#updateGrid(this.#range);
+  }
+
+  #clearSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) => {
       square.style.backgroundColor = '#FFF';
-    })
-  );
-}
-
-/// /////////
-// Etch-a-Sketch - Event Listeners
-/// /////////
-colorInput.addEventListener('change', colorPicker);
-colorBtn.addEventListener('click', colorSquares);
-rainbowBtn.addEventListener('click', rainbowSquares);
-eraserBtn.addEventListener('click', eraseSquares);
-clearBtn.addEventListener('click', clearSquares);
-easBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    easBtns.forEach((btn) => {
-      btn.classList.remove('active');
     });
-    btn.classList.add('active');
-  });
-});
+  }
+
+  #colorPicker() {
+    this.#colorValue = this.colorInput.value;
+  }
+
+  #colorSquares() {
+    const squares = document.querySelectorAll('.eas-square');
+    squares.forEach((square) =>
+        square.addEventListener('mouseover', () => {
+        square.style.backgroundColor = this.#colorValue;
+      })
+    );
+  }
+
+  #generateRainbow() {
+    const [r, g, b] = [
+      Math.floor(Math.random() * 256),
+      Math.floor(Math.random() * 256),
+      Math.floor(Math.random() * 256),
+    ];
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  #rainbowSquares() {
+      const squares = document.querySelectorAll('.eas-square');
+      squares.forEach((square) =>
+        square.addEventListener('mouseover', () => {
+        square.style.backgroundColor = generateRainbow();
+      })
+    );
+  }
+
+  #eraseSquares() {
+      const squares = document.querySelectorAll('.eas-square');
+      squares.forEach((square) =>
+        square.addEventListener('mouseover', () => {
+        square.style.backgroundColor = '#FFF';
+      })
+    );
+  }
+}

@@ -1,7 +1,6 @@
-/* eslint-disable default-case */
-
-'use strict';
-
+export default class Calculator {
+  constructor() {}
+}
 /// /////////
 // Calculator - Global Variables
 /// /////////

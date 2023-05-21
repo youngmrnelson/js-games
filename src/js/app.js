@@ -1,4 +1,6 @@
 import RockPaperScissors from './rps';
+import EtchASketch from './eas';
+import Calculator from './calculator';
 
 class App {
   #game = document.getElementById('game');
@@ -23,9 +25,11 @@ class App {
       }
       if(btn.textContent === 'Etch a Sketch') {
         this.#createBoard('eas');
+        return new EtchASketch();
       }
       if(btn.textContent === 'Calculator') {
         this.#createBoard('calc');
+        return new Calculator();
       }
     }))
   }
