@@ -12,6 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _rps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rps */ "./src/js/rps.js");
+/* harmony import */ var _eas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eas */ "./src/js/eas.js");
+/* harmony import */ var _calculator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculator */ "./src/js/calculator.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -26,17 +29,20 @@ function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classEx
 function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
 function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
 function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+
+
+
 var _game = /*#__PURE__*/new WeakMap();
 var _toggleMenu = /*#__PURE__*/new WeakSet();
-var _test = /*#__PURE__*/new WeakSet();
 var _startGame = /*#__PURE__*/new WeakSet();
 var _loading = /*#__PURE__*/new WeakSet();
+var _createBoard = /*#__PURE__*/new WeakSet();
 var App = /*#__PURE__*/_createClass(function App() {
   var _this = this;
   _classCallCheck(this, App);
+  _classPrivateMethodInitSpec(this, _createBoard);
   _classPrivateMethodInitSpec(this, _loading);
   _classPrivateMethodInitSpec(this, _startGame);
-  _classPrivateMethodInitSpec(this, _test);
   // Navigation Menu Functions
   _classPrivateMethodInitSpec(this, _toggleMenu);
   _classPrivateFieldInitSpec(this, _game, {
@@ -55,18 +61,31 @@ var App = /*#__PURE__*/_createClass(function App() {
   this.gameBtns.forEach(function (btn) {
     return btn.addEventListener('click', _classPrivateMethodGet(_this, _startGame, _startGame2).bind(_this));
   });
+  this.gameBtns.forEach(function (btn) {
+    return btn.addEventListener('click', function () {
+      if (btn.textContent === 'Rock Paper Scissors') {
+        _classPrivateMethodGet(_this, _createBoard, _createBoard2).call(_this, 'rps');
+        return new _rps__WEBPACK_IMPORTED_MODULE_0__["default"]();
+      }
+      if (btn.textContent === 'Etch a Sketch') {
+        _classPrivateMethodGet(_this, _createBoard, _createBoard2).call(_this, 'eas');
+        return new _eas__WEBPACK_IMPORTED_MODULE_1__["default"]();
+      }
+      if (btn.textContent === 'Calculator') {
+        _classPrivateMethodGet(_this, _createBoard, _createBoard2).call(_this, 'calc');
+        return new _calculator__WEBPACK_IMPORTED_MODULE_2__["default"]();
+      }
+    });
+  });
 });
 function _toggleMenu2() {
   this.navLinksEl.classList.toggle('hidden');
-}
-function _test2() {
-  console.log('Hello');
 }
 function _startGame2() {
   while (_classPrivateFieldGet(this, _game).firstChild) {
     _classPrivateFieldGet(this, _game).removeChild(_classPrivateFieldGet(this, _game).firstChild);
   }
-  _classPrivateMethodGet(this, _loading, _loading2).call(this);
+  // return new RockPaperScissors();
 }
 function _loading2() {
   var _this2 = this;
@@ -76,9 +95,559 @@ function _loading2() {
   setTimeout(function () {
     _this2.loadingSVG.classList.add('hidden');
     _this2.loadingSVG.classList.remove('display-block');
-  });
+  }, 1500);
+}
+function _createBoard2(game) {
+  if (game === 'rps') {
+    var html = "<h2 class=\"h h-game mb-2\">ROCK PAPER SCISSORS</h2>\n        <div class=\"container-rps ta-c p-3 grid grid-gc--2\">\n          <button class=\"btn btn-game p-2 grid-col--full ps-c\">Start Game</button>\n          <p class=\"h h-game grid-col--full hidden game-header\">\n            Round #<span class=\"round-number\">0</span>\n          </p>\n          <p class=\"p-game grid-col--full hidden game-text\">Pick your weapon</p>\n          <div class=\"p-scores player-scoreboard ps-c\">\n            <p class=\"p-game\">Score: <span class=\"player-score\">0</span></p>\n            <p class=\"p-game\">\n              <i class=\"fa-solid fa-user i-game-player\" aria-hidden=\"true\"></i>\n            </p>\n            <p class=\"p-game\">\n              User\n              <span class=\"player-choice\">?</span>\n            </p>\n          </div>\n          <div class=\"p-scores cpu-scoreboard ps-c\">\n            <p class=\"p-game\">Score: <span class=\"cpu-score\">0</span></p>\n            <p class=\"p-game\">\n              <i\n                class=\"fa-solid fa-user-astronaut i-game-player\"\n                aria-hidden=\"true\"\n              ></i>\n            </p>\n            <p class=\"p-game\">\n              <span class=\"cpu-choice\">?</span>\n              CPU\n            </p>\n          </div>\n          <p class=\"p-game game-message grid-col--full\"></p>\n          <div\n            class=\"m-auto rps-choices grid-col--full grid grid-gc--2 gap-3 my-3 hidden\"\n          >\n            <button class=\"btn btn-rps gap-3 btn-rps-rock ps-c\">\n              <i\n                class=\"fa-regular fa-hand-back-fist btn-rps-choice-icon mb-1\"\n                aria-hidden=\"true\"\n              ></i>\n              <span class=\"h btn-rps-choice disp-block\">ROCK</span>\n            </button>\n            <button class=\"btn btn-rps btn-rps-paper ps-c\">\n              <i\n                class=\"fa-regular fa-hand btn-rps-choice-icon mb-1\"\n                aria-hidden=\"true\"\n              ></i>\n              <span class=\"h btn-rps-choice disp-block\">PAPER</span>\n            </button>\n            <button class=\"btn btn-rps btn-rps-scissors grid-col--full ps-c\">\n              <i\n                class=\"fa-regular fa-hand-scissors btn-rps-choice-icon mb-1\"\n                aria-hidden=\"true\"\n              ></i>\n              <span class=\"h btn-rps-choice disp-block\">SCISSORS</span>\n            </button>\n          </div>\n        </div>";
+    _classPrivateFieldGet(this, _game).insertAdjacentHTML('afterbegin', html);
+    _classPrivateFieldGet(this, _game).className = '';
+    _classPrivateFieldGet(this, _game).classList.add('my-4', 'flex', 'flex-fd--c', 'ai-c', 'jc-c', 'p-2', 'full-screen');
+  }
+  if (game === 'eas') {
+    var _html = "\n        <h2 class=\"h h-game mb-2\">ETCH-A-SKETCH</h2>\n        <div\n        class=\"eas-controls-container mb-2 flex flex-fd--c-mobile gap-2 ai-c\"\n        >\n        <input type=\"color\" id=\"eas-color\" />\n        <button class=\"btn btn-eas btn-eas-color p-2\">Color Mode</button>\n        <button class=\"btn btn-eas btn-eas-rainbow p-2\">Rainbow Mode</button>\n        <button class=\"btn btn-eas btn-eas-eraser p-2\">Eraser</button>\n        <button class=\"btn btn-eas btn-eas-clear p-2\">Clear</button>\n        <input type=\"range\" id=\"eas-range\" min=\"1\" max=\"32\" /><span\n          id=\"eas-range-num\"\n        ></span>\n      </div>\n      <div class=\"container-eas eas-grid\"></div>\n      ";
+    _classPrivateFieldGet(this, _game).insertAdjacentHTML('afterbegin', _html);
+    _classPrivateFieldGet(this, _game).className = '';
+    _classPrivateFieldGet(this, _game).classList.add('my-4', 'flex', 'flex-fd--c', 'ai-c', 'jc-c', 'p-2');
+  }
+  if (game === 'calc') {
+    var _html2 = "\n        <h2 class=\"h h-game mb-2\">Calculator</h2>\n        <div class=\"container container-calc grid grid-gc--4 gap-1 p-3\">\n        <!-- Calculator -->\n        <div class=\"calc-display grid-col--full p-3\">\n          <p class=\"p-calc-display ta-r\">0</p>\n          <p class=\"p-calc ta-r\">0</p>\n        </div>\n        <!-- Top Row -->\n        <button class=\"btn btn-calc btn-calc-alt p-3 grid-s--3\">AC</button>\n        <button class=\"btn btn-calc btn-op p-3\">/</button>\n        <!-- Calc Row -->\n        <button class=\"btn btn-calc btn-calc-num p-3\">7</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">8</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">9</button>\n        <button class=\"btn btn-calc btn-op p-3\">*</button>\n        <!-- Calc Row -->\n        <button class=\"btn btn-calc btn-calc-num p-3\">4</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">5</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">6</button>\n        <button class=\"btn btn-calc btn-op p-3\">-</button>\n        <!-- Calc Row -->\n        <button class=\"btn btn-calc btn-calc-num p-3\">1</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">3</button>\n        <button class=\"btn btn-calc btn-calc-num p-3\">3</button>\n        <button class=\"btn btn-calc btn-op p-3\">+</button>\n        <!-- Calc Row -->\n        <button class=\"btn btn-calc btn-calc-num p-3 grid-s--3\">0</button>\n        <button class=\"btn btn-calc btn-op p-3\">=</button>\n      </div>\n      ";
+    _classPrivateFieldGet(this, _game).insertAdjacentHTML('afterbegin', _html2);
+    _classPrivateFieldGet(this, _game).className = '';
+    _classPrivateFieldGet(this, _game).classList.add('my-4', 'flex', 'flex-fd--c', 'ai-c', 'jc-c', 'p-2');
+  }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new App());
+
+/***/ }),
+
+/***/ "./src/js/calculator.js":
+/*!******************************!*\
+  !*** ./src/js/calculator.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Calculator)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
+function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+var _add = /*#__PURE__*/new WeakSet();
+var _subtract = /*#__PURE__*/new WeakSet();
+var _multiply = /*#__PURE__*/new WeakSet();
+var _divide = /*#__PURE__*/new WeakSet();
+var _updateCalcDisplay = /*#__PURE__*/new WeakSet();
+var _updateOperand = /*#__PURE__*/new WeakSet();
+var _clearCalculator = /*#__PURE__*/new WeakSet();
+var Calculator = /*#__PURE__*/_createClass(function Calculator() {
+  var _this = this;
+  _classCallCheck(this, Calculator);
+  _classPrivateMethodInitSpec(this, _clearCalculator);
+  _classPrivateMethodInitSpec(this, _updateOperand);
+  _classPrivateMethodInitSpec(this, _updateCalcDisplay);
+  _classPrivateMethodInitSpec(this, _divide);
+  _classPrivateMethodInitSpec(this, _multiply);
+  _classPrivateMethodInitSpec(this, _subtract);
+  _classPrivateMethodInitSpec(this, _add);
+  // DOM Variables
+  _defineProperty(this, "calcInputDisplay", document.querySelector('.p-calc-display'));
+  _defineProperty(this, "calcInputResult", document.querySelector('.p-calc'));
+  _defineProperty(this, "calcNumberBtns", document.querySelectorAll('.btn-calc-num'));
+  _defineProperty(this, "calcAltBtns", document.querySelectorAll('.btn-calc-alt'));
+  _defineProperty(this, "calcOpBtns", document.querySelectorAll('.btn-op'));
+  // Global Variables
+  _defineProperty(this, "calcInputValue", '');
+  _defineProperty(this, "firstOperand", void 0);
+  _defineProperty(this, "secondOperand", void 0);
+  _defineProperty(this, "selectedOperator", void 0);
+  this.calcNumberBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      // Check if an operator has already been selected
+      if (!_this.selectedOperator) {
+        // If not, update the first operand
+        _this.firstOperand = parseFloat((_this.firstOperand || '') + e.target.textContent);
+        // Display the updated operand value
+        _this.calcInputValue = _this.firstOperand.toString();
+        _classPrivateMethodGet(_this, _updateCalcDisplay, _updateCalcDisplay2).call(_this);
+      } else {
+        // If an operator has been selected, update the second operand
+        _this.secondOperand = parseFloat((_this.secondOperand || '') + e.target.textContent);
+        // Display the updated operand value
+        _this.calcInputValue = _this.secondOperand.toString();
+        _classPrivateMethodGet(_this, _updateCalcDisplay, _updateCalcDisplay2).call(_this);
+      }
+    });
+  });
+  this.calcAltBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      if (e.target.textContent === 'AC') {
+        _classPrivateMethodGet(_this, _clearCalculator, _clearCalculator2).call(_this);
+        _this.calcInputResult.textContent = _this.calcInputValue;
+      }
+    });
+  });
+  this.calcOpBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      if (e.target.textContent === '+') {
+        _classPrivateMethodGet(_this, _updateOperand, _updateOperand2).call(_this, '+');
+      }
+      if (e.target.textContent === '-') {
+        _classPrivateMethodGet(_this, _updateOperand, _updateOperand2).call(_this, '-');
+      }
+      if (e.target.textContent === '/') {
+        _classPrivateMethodGet(_this, _updateOperand, _updateOperand2).call(_this, '/');
+      }
+      if (e.target.textContent === '*') {
+        _classPrivateMethodGet(_this, _updateOperand, _updateOperand2).call(_this, '*');
+      }
+      // Calculate the result when the equals button is clicked
+      if (e.target.textContent === '=') {
+        if (_this.firstOperand && _this.secondOperand && _this.selectedOperator) {
+          // Perfrom the calculation based on the selected operator
+          var result;
+          switch (_this.selectedOperator) {
+            case '+':
+              result = _classPrivateMethodGet(_this, _add, _add2).call(_this, _this.firstOperand, _this.secondOperand);
+              break;
+            case '-':
+              result = _classPrivateMethodGet(_this, _subtract, _subtract2).call(_this, _this.firstOperand, _this.secondOperand);
+              break;
+            case '*':
+              result = _classPrivateMethodGet(_this, _multiply, _multiply2).call(_this, _this.firstOperand, _this.secondOperand);
+              break;
+            case '/':
+              result = _classPrivateMethodGet(_this, _divide, _divide2).call(_this, _this.firstOperand, _this.secondOperand);
+              break;
+          }
+          // Display the result
+          _this.calcInputResult.textContent = result;
+          // Reset the operands and operator
+          _classPrivateMethodGet(_this, _clearCalculator, _clearCalculator2).call(_this);
+        }
+      }
+    });
+  });
+});
+function _add2(a, b) {
+  return a + b;
+}
+function _subtract2(a, b) {
+  return a - b;
+}
+function _multiply2(a, b) {
+  return a * b;
+}
+function _divide2(a, b) {
+  return a / b;
+}
+function _updateCalcDisplay2() {
+  this.calcInputDisplay.textContent = this.calcInputValue;
+  this.calcInputValue = 0;
+}
+function _updateOperand2(operand) {
+  this.selectedOperator = operand;
+  this.calcInputDisplay.textContent = this.selectedOperator;
+}
+function _clearCalculator2() {
+  this.calcInputValue = '';
+  this.firstOperand = null;
+  this.secondOperand = null;
+  this.selectedOperator = null;
+  this.calcInputDisplay.textContent = '0';
+}
+
+
+/***/ }),
+
+/***/ "./src/js/eas.js":
+/*!***********************!*\
+  !*** ./src/js/eas.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ EtchASketch)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
+function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
+function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
+function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
+function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
+function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+var _range = /*#__PURE__*/new WeakMap();
+var _colorValue = /*#__PURE__*/new WeakMap();
+var _createSquares = /*#__PURE__*/new WeakSet();
+var _removeSquares = /*#__PURE__*/new WeakSet();
+var _updateGrid = /*#__PURE__*/new WeakSet();
+var _updateRange = /*#__PURE__*/new WeakSet();
+var _clearSquares = /*#__PURE__*/new WeakSet();
+var _colorPicker = /*#__PURE__*/new WeakSet();
+var _colorSquares = /*#__PURE__*/new WeakSet();
+var _generateRainbow = /*#__PURE__*/new WeakSet();
+var _rainbowSquares = /*#__PURE__*/new WeakSet();
+var _eraseSquares = /*#__PURE__*/new WeakSet();
+var EtchASketch = /*#__PURE__*/_createClass(function EtchASketch() {
+  var _this = this;
+  _classCallCheck(this, EtchASketch);
+  _classPrivateMethodInitSpec(this, _eraseSquares);
+  _classPrivateMethodInitSpec(this, _rainbowSquares);
+  _classPrivateMethodInitSpec(this, _generateRainbow);
+  _classPrivateMethodInitSpec(this, _colorSquares);
+  _classPrivateMethodInitSpec(this, _colorPicker);
+  _classPrivateMethodInitSpec(this, _clearSquares);
+  _classPrivateMethodInitSpec(this, _updateRange);
+  _classPrivateMethodInitSpec(this, _updateGrid);
+  _classPrivateMethodInitSpec(this, _removeSquares);
+  _classPrivateMethodInitSpec(this, _createSquares);
+  // DOM Variables
+  _defineProperty(this, "easContainer", document.querySelector('.container-eas'));
+  _defineProperty(this, "easBtns", document.querySelectorAll('.btn-eas'));
+  _defineProperty(this, "colorInput", document.getElementById('eas-color'));
+  _defineProperty(this, "colorBtn", document.querySelector('.btn-eas-color'));
+  _defineProperty(this, "rainbowBtn", document.querySelector('.btn-eas-rainbow'));
+  _defineProperty(this, "eraserBtn", document.querySelector('.btn-eas-eraser'));
+  _defineProperty(this, "clearBtn", document.querySelector('.btn-eas-clear'));
+  _defineProperty(this, "rangeInput", document.getElementById('eas-range'));
+  _defineProperty(this, "rangeText", document.getElementById('eas-range-num'));
+  // Global Variables
+  _classPrivateFieldInitSpec(this, _range, {
+    writable: true,
+    value: 1
+  });
+  _classPrivateFieldInitSpec(this, _colorValue, {
+    writable: true,
+    value: this.colorInput.value
+  });
+  // Event Listeners
+  _classPrivateMethodGet(this, _createSquares, _createSquares2).call(this, _classPrivateFieldGet(this, _range));
+  this.colorInput.addEventListener('change', _classPrivateMethodGet(this, _colorPicker, _colorPicker2).bind(this));
+  this.colorBtn.addEventListener('click', _classPrivateMethodGet(this, _colorSquares, _colorSquares2).bind(this));
+  this.rainbowBtn.addEventListener('click', _classPrivateMethodGet(this, _rainbowSquares, _rainbowSquares2).bind(this));
+  this.eraserBtn.addEventListener('click', _classPrivateMethodGet(this, _eraseSquares, _eraseSquares2).bind(this));
+  this.clearBtn.addEventListener('click', _classPrivateMethodGet(this, _clearSquares, _clearSquares2).bind(this));
+  this.easBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      _this.easBtns.forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+      btn.classList.add('active');
+    });
+  });
+  this.rangeInput.addEventListener('change', _classPrivateMethodGet(this, _updateRange, _updateRange2).bind(this));
+});
+function _createSquares2(range) {
+  for (var i = 0; i < range * range; i++) {
+    var cell = document.createElement('div');
+    cell.classList.add('eas-square');
+    this.easContainer.appendChild(cell);
+  }
+  _classPrivateMethodGet(this, _updateGrid, _updateGrid2).call(this, range);
+}
+function _removeSquares2() {
+  while (this.easContainer.firstChild) {
+    this.easContainer.removeChild(this.easContainer.firstChild);
+  }
+}
+function _updateGrid2(range) {
+  this.easContainer.style.gridTemplateColumns = "repeat(".concat(_classPrivateFieldGet(this, _range), ", 1fr)");
+  this.easContainer.style.gridTemplateRows = "repeat(".concat(_classPrivateFieldGet(this, _range), ", 1fr)");
+}
+function _updateRange2() {
+  _classPrivateMethodGet(this, _removeSquares, _removeSquares2).call(this);
+  _classPrivateFieldSet(this, _range, this.rangeInput.value);
+  this.rangeText.textContent = "".concat(_classPrivateFieldGet(this, _range), " x ").concat(_classPrivateFieldGet(this, _range));
+  _classPrivateMethodGet(this, _createSquares, _createSquares2).call(this, _classPrivateFieldGet(this, _range));
+  _classPrivateMethodGet(this, _updateGrid, _updateGrid2).call(this, _classPrivateFieldGet(this, _range));
+}
+function _clearSquares2() {
+  var squares = document.querySelectorAll('.eas-square');
+  squares.forEach(function (square) {
+    square.style.backgroundColor = '#FFF';
+  });
+}
+function _colorPicker2() {
+  _classPrivateFieldSet(this, _colorValue, this.colorInput.value);
+}
+function _colorSquares2() {
+  var _this2 = this;
+  var squares = document.querySelectorAll('.eas-square');
+  squares.forEach(function (square) {
+    return square.addEventListener('mouseover', function () {
+      square.style.backgroundColor = _classPrivateFieldGet(_this2, _colorValue);
+    });
+  });
+}
+function _generateRainbow2() {
+  var _ref = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)],
+    r = _ref[0],
+    g = _ref[1],
+    b = _ref[2];
+  return "rgb(".concat(r, ", ").concat(g, ", ").concat(b, ")");
+}
+function _rainbowSquares2() {
+  var _this3 = this;
+  var squares = document.querySelectorAll('.eas-square');
+  squares.forEach(function (square) {
+    return square.addEventListener('mouseover', function () {
+      square.style.backgroundColor = _classPrivateMethodGet(_this3, _generateRainbow, _generateRainbow2).call(_this3);
+    });
+  });
+}
+function _eraseSquares2() {
+  var squares = document.querySelectorAll('.eas-square');
+  squares.forEach(function (square) {
+    return square.addEventListener('mouseover', function () {
+      square.style.backgroundColor = '#FFF';
+    });
+  });
+}
+
+
+/***/ }),
+
+/***/ "./src/js/rps.js":
+/*!***********************!*\
+  !*** ./src/js/rps.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ RockPaperScissors)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
+function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
+function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
+function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
+function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
+function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+var _roundNumber = /*#__PURE__*/new WeakMap();
+var _playerScore = /*#__PURE__*/new WeakMap();
+var _cpuScore = /*#__PURE__*/new WeakMap();
+var _winningScore = /*#__PURE__*/new WeakMap();
+var _getComputerChoice = /*#__PURE__*/new WeakSet();
+var _displayGameHeader = /*#__PURE__*/new WeakSet();
+var _resetGameScore = /*#__PURE__*/new WeakSet();
+var _displayGameScores = /*#__PURE__*/new WeakSet();
+var _displayGameButtons = /*#__PURE__*/new WeakSet();
+var _startGame = /*#__PURE__*/new WeakSet();
+var _endGame = /*#__PURE__*/new WeakSet();
+var _updateGameRound = /*#__PURE__*/new WeakSet();
+var _playerWinsRound = /*#__PURE__*/new WeakSet();
+var _cpuWinsRound = /*#__PURE__*/new WeakSet();
+var _updatePlayerChoices = /*#__PURE__*/new WeakSet();
+var _playerWinsGame = /*#__PURE__*/new WeakSet();
+var _cpuWinsGame = /*#__PURE__*/new WeakSet();
+var _nobodyWinsGame = /*#__PURE__*/new WeakSet();
+var _checkForWinner = /*#__PURE__*/new WeakSet();
+var _playRound = /*#__PURE__*/new WeakSet();
+var _playGame = /*#__PURE__*/new WeakSet();
+// RPS
+var RockPaperScissors = /*#__PURE__*/_createClass(function RockPaperScissors() {
+  var _this = this;
+  _classCallCheck(this, RockPaperScissors);
+  _classPrivateMethodInitSpec(this, _playGame);
+  _classPrivateMethodInitSpec(this, _playRound);
+  _classPrivateMethodInitSpec(this, _checkForWinner);
+  _classPrivateMethodInitSpec(this, _nobodyWinsGame);
+  _classPrivateMethodInitSpec(this, _cpuWinsGame);
+  _classPrivateMethodInitSpec(this, _playerWinsGame);
+  _classPrivateMethodInitSpec(this, _updatePlayerChoices);
+  _classPrivateMethodInitSpec(this, _cpuWinsRound);
+  _classPrivateMethodInitSpec(this, _playerWinsRound);
+  _classPrivateMethodInitSpec(this, _updateGameRound);
+  _classPrivateMethodInitSpec(this, _endGame);
+  _classPrivateMethodInitSpec(this, _startGame);
+  _classPrivateMethodInitSpec(this, _displayGameButtons);
+  _classPrivateMethodInitSpec(this, _displayGameScores);
+  _classPrivateMethodInitSpec(this, _resetGameScore);
+  _classPrivateMethodInitSpec(this, _displayGameHeader);
+  _classPrivateMethodInitSpec(this, _getComputerChoice);
+  // DOM Variables
+  _defineProperty(this, "gameStartBtn", document.querySelector('.btn-game'));
+  _defineProperty(this, "roundNumberEl", document.querySelector('.round-number'));
+  _defineProperty(this, "playerScoreEl", document.querySelector('.player-score'));
+  _defineProperty(this, "playerChoiceEl", document.querySelector('.player-choice'));
+  _defineProperty(this, "cpuScoreEl", document.querySelector('.cpu-score'));
+  _defineProperty(this, "cpuChoiceEl", document.querySelector('.cpu-choice'));
+  _defineProperty(this, "gameMessage", document.querySelector('.game-message'));
+  _defineProperty(this, "rpsChoicesContainer", document.querySelector('.rps-choices'));
+  _defineProperty(this, "rockBtn", document.querySelector('.btn-rps-rock'));
+  _defineProperty(this, "paperBtn", document.querySelector('.btn-rps-paper'));
+  _defineProperty(this, "scissorsBtn", document.querySelector('.btn-rps-scissors'));
+  // Game Variables
+  _classPrivateFieldInitSpec(this, _roundNumber, {
+    writable: true,
+    value: 0
+  });
+  _classPrivateFieldInitSpec(this, _playerScore, {
+    writable: true,
+    value: 0
+  });
+  _classPrivateFieldInitSpec(this, _cpuScore, {
+    writable: true,
+    value: 0
+  });
+  _classPrivateFieldInitSpec(this, _winningScore, {
+    writable: true,
+    value: 5
+  });
+  // Event Listeners
+  this.gameStartBtn.addEventListener('click', _classPrivateMethodGet(this, _startGame, _startGame2).bind(this));
+  this.rockBtn.addEventListener('click', function () {
+    return _classPrivateMethodGet(_this, _playGame, _playGame2).call(_this, 'rock');
+  });
+  this.paperBtn.addEventListener('click', function () {
+    return _classPrivateMethodGet(_this, _playGame, _playGame2).call(_this, 'paper');
+  });
+  this.scissorsBtn.addEventListener('click', function () {
+    return _classPrivateMethodGet(_this, _playGame, _playGame2).call(_this, 'scissors');
+  });
+});
+function _getComputerChoice2() {
+  var cpuChoices = ['rock', 'paper', 'scissors'];
+  return cpuChoices[Math.floor(Math.random() * cpuChoices.length)];
+}
+function _displayGameHeader2() {
+  var gameHeader = document.querySelector('.game-header');
+  var gameText = document.querySelector('.game-text');
+  gameHeader.classList.toggle('hidden');
+  gameText.classList.toggle('hidden');
+}
+function _resetGameScore2() {
+  _classPrivateFieldSet(this, _roundNumber, 0);
+  _classPrivateFieldSet(this, _playerScore, 0);
+  _classPrivateFieldSet(this, _cpuScore, 0);
+  this.playerChoiceEl.innerHTML = '?';
+  this.cpuChoiceEl.innerHTML = '?';
+}
+function _displayGameScores2() {
+  this.roundNumberEl.textContent = _classPrivateFieldGet(this, _roundNumber);
+  this.playerScoreEl.textContent = _classPrivateFieldGet(this, _playerScore);
+  this.cpuScoreEl.textContent = _classPrivateFieldGet(this, _cpuScore);
+}
+function _displayGameButtons2() {
+  this.rpsChoicesContainer.classList.toggle('hidden');
+}
+function _startGame2() {
+  this.gameStartBtn.style.display = 'none';
+  this.gameMessage.textContent = '';
+  _classPrivateMethodGet(this, _displayGameHeader, _displayGameHeader2).call(this);
+  _classPrivateMethodGet(this, _nobodyWinsGame, _nobodyWinsGame2).call(this);
+  _classPrivateMethodGet(this, _resetGameScore, _resetGameScore2).call(this);
+  _classPrivateMethodGet(this, _displayGameScores, _displayGameScores2).call(this);
+  _classPrivateMethodGet(this, _displayGameButtons, _displayGameButtons2).call(this);
+}
+function _endGame2() {
+  this.gameStartBtn.style.display = 'block';
+  _classPrivateMethodGet(this, _displayGameHeader, _displayGameHeader2).call(this);
+  _classPrivateMethodGet(this, _displayGameButtons, _displayGameButtons2).call(this);
+}
+function _updateGameRound2() {
+  var _this$roundNumber, _this$roundNumber2;
+  _classPrivateFieldSet(this, _roundNumber, (_this$roundNumber = _classPrivateFieldGet(this, _roundNumber), _this$roundNumber2 = _this$roundNumber++, _this$roundNumber)), _this$roundNumber2;
+  this.roundNumberEl.textContent = _classPrivateFieldGet(this, _roundNumber);
+}
+function _playerWinsRound2() {
+  var _this$playerScore, _this$playerScore2;
+  _classPrivateFieldSet(this, _playerScore, (_this$playerScore = _classPrivateFieldGet(this, _playerScore), _this$playerScore2 = _this$playerScore++, _this$playerScore)), _this$playerScore2;
+  this.playerScoreEl.textContent = _classPrivateFieldGet(this, _playerScore);
+  this.gameMessage.textContent = 'You won!';
+}
+function _cpuWinsRound2() {
+  var _this$cpuScore, _this$cpuScore2;
+  _classPrivateFieldSet(this, _cpuScore, (_this$cpuScore = _classPrivateFieldGet(this, _cpuScore), _this$cpuScore2 = _this$cpuScore++, _this$cpuScore)), _this$cpuScore2;
+  this.cpuScoreEl.textContent = _classPrivateFieldGet(this, _cpuScore);
+  this.gameMessage.textContent = 'You lost...';
+}
+function _updatePlayerChoices2(playerSelection, computerSelection) {
+  this.playerChoiceEl.textContent = playerSelection.toUpperCase();
+  this.cpuChoiceEl.textContent = computerSelection.toUpperCase();
+}
+function _playerWinsGame2() {
+  this.playerScoreEl.classList.add('p-win');
+  this.playerChoiceEl.classList.add('p-win');
+  this.cpuScoreEl.classList.add('p-lose');
+  this.cpuChoiceEl.classList.add('p-lose');
+  _classPrivateMethodGet(this, _endGame, _endGame2).call(this);
+}
+function _cpuWinsGame2() {
+  this.playerScoreEl.classList.add('p-lose');
+  this.playerChoiceEl.classList.add('p-lose');
+  this.cpuScoreEl.classList.add('p-win');
+  this.cpuChoiceEl.classList.add('p-win');
+  _classPrivateMethodGet(this, _endGame, _endGame2).call(this);
+}
+function _nobodyWinsGame2() {
+  this.playerScoreEl.classList.remove('p-win');
+  this.playerChoiceEl.classList.remove('p-win');
+  this.cpuScoreEl.classList.remove('p-win');
+  this.cpuChoiceEl.classList.remove('p-win');
+  this.playerScoreEl.classList.remove('p-lose');
+  this.playerChoiceEl.classList.remove('p-lose');
+  this.cpuScoreEl.classList.remove('p-lose');
+  this.cpuChoiceEl.classList.remove('p-lose');
+}
+function _checkForWinner2() {
+  if (_classPrivateFieldGet(this, _playerScore) !== _classPrivateFieldGet(this, _winningScore) && _classPrivateFieldGet(this, _cpuScore) !== _classPrivateFieldGet(this, _winningScore)) {
+    return;
+  }
+  if (_classPrivateFieldGet(this, _playerScore) === _classPrivateFieldGet(this, _winningScore)) {
+    _classPrivateMethodGet(this, _playerWinsGame, _playerWinsGame2).call(this);
+  } else if (_classPrivateFieldGet(this, _cpuScore) === _classPrivateFieldGet(this, _winningScore)) {
+    _classPrivateMethodGet(this, _cpuWinsGame, _cpuWinsGame2).call(this);
+  }
+}
+function _playRound2(playerSelection) {
+  var computerSelection = _classPrivateMethodGet(this, _getComputerChoice, _getComputerChoice2).call(this);
+  _classPrivateMethodGet(this, _updatePlayerChoices, _updatePlayerChoices2).call(this, playerSelection, computerSelection);
+  if (playerSelection === computerSelection) {
+    _classPrivateMethodGet(this, _updateGameRound, _updateGameRound2).call(this);
+    this.gameMessage.textContent = "It's a draw.";
+  } else if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock' || playerSelection === 'scissors' && computerSelection === 'paper') {
+    _classPrivateMethodGet(this, _updateGameRound, _updateGameRound2).call(this);
+    _classPrivateMethodGet(this, _playerWinsRound, _playerWinsRound2).call(this);
+    _classPrivateMethodGet(this, _checkForWinner, _checkForWinner2).call(this);
+  } else {
+    _classPrivateMethodGet(this, _updateGameRound, _updateGameRound2).call(this);
+    _classPrivateMethodGet(this, _cpuWinsRound, _cpuWinsRound2).call(this);
+    _classPrivateMethodGet(this, _checkForWinner, _checkForWinner2).call(this);
+  }
+}
+function _playGame2(playerSelection) {
+  _classPrivateMethodGet(this, _playRound, _playRound2).call(this, playerSelection);
+}
+
 
 /***/ }),
 
@@ -788,4 +1357,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle2fff85e33d4227298e74.js.map
+//# sourceMappingURL=bundlea571381d63b9a37041f6.js.map
